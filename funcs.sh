@@ -2,6 +2,7 @@ function mylatex {
     mkdir -p ./.latex
     pdflatex -shell-escape -output-directory "./.latex" "$1"
     mv ./.latex/*.pdf ./
+    rm -rf _minted*
 }
 
 function vmstop {

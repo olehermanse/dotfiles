@@ -30,8 +30,8 @@ alias server='python -m SimpleHTTPServer'
 alias path='echo -e ${PATH//:/\\n}'
 alias del='rm -rvf'
 alias pdf='open *.pdf'
-alias bashreload='source ~/edu/bashrc'
-alias bashrc='open ~/edu/bashrc'
+alias bashreload='source ~/.setup-bash/start.sh'
+alias bashrc='open ~/.setup-bash/start.sh'
 
 alias vmshut="vboxmanage list runningvms | gsed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} acpipowerbutton"
 alias vms="vboxmanage list runningvms"
