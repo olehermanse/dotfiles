@@ -9,5 +9,5 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then      # LINUX
 elif [[ "$OSTYPE" == "darwin"* ]]; then    # MAC
     source ".setup-bash/mac.sh"
 else
-	echo "I'm a " $OSTYPE
+	echo "Unrecognized OS:" $OSTYPE
 fi
