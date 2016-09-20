@@ -1,8 +1,27 @@
 function mylatex {
+    filename=$(basename "$1")
+    filename="${filename%.*}"
     mkdir -p ./.latex
-    pdflatex -shell-escape -output-directory "./.latex" "$1"
+    if [ -d "./.latex/_minted-"$filename ]; then
+       mv "./.latex/_minted-"$filename ./
+    fi
+    pdflatex -shell-escape -output-directory "./.latex" "${1/.pdf/.tex}"
     mv ./.latex/*.pdf ./
-    rm -rf _minted*
+    mv _minted-$filename ./.latex
+}
+
+function triplelatex {
+    filename=$(basename "$1")
+    filename="${filename%.*}"
+    mkdir -p ./.latex
+    if [ -d "./.latex/_minted-"$filename ]; then
+       mv "./.latex/_minted-"$filename ./
+    fi
+    pdflatex -shell-escape -output-directory "./.latex" "${1/.pdf/.tex}"
+    pdflatex -shell-escape -output-directory "./.latex" "${1/.pdf/.tex}"
+    pdflatex -shell-escape -output-directory "./.latex" "${1/.pdf/.tex}"
+    mv ./.latex/*.pdf ./
+    mv _minted-$filename ./.latex
 }
 
 function vmstop {

@@ -1,13 +1,29 @@
+# http://stackoverflow.com/a/12197518
+# GET DIRECTORY OF THIS SCRIPT (PATH):
+pushd . > /dev/null
+SETUP_BASH_PATH="${BASH_SOURCE[0]}";
+while([ -h "${SETUP_BASH_PATH}" ]); do
+    cd "`dirname "${SETUP_BASH_PATH}"`"
+    SETUP_BASH_PATH="$(readlink "`basename "${SETUP_BASH_PATH}"`")";
+done
+cd "`dirname "${SETUP_BASH_PATH}"`" > /dev/null
+SETUP_BASH_PATH="`pwd`";
+popd  > /dev/null
+#echo "srcipt=[${SETUP_BASH_PATH}]"
+#echo "pwd   =[`pwd`]"
+export SETUP_BASH_PATH
+
 # GENERAL
-source ".setup-bash/exports.sh"
-source ".setup-bash/aliases.sh"
-source ".setup-bash/funcs.sh"
+source ${SETUP_BASH_PATH}"/exports.sh"
+source ${SETUP_BASH_PATH}"/aliases.sh"
+source ${SETUP_BASH_PATH}"/funcs.sh"
+source ${SETUP_BASH_PATH}"/vars.sh"
 
 # Platform dependent:
 if [[ "$OSTYPE" == "linux-gnu" ]]; then      # LINUX
-	source ".setup-bash/linux.sh"
-elif [[ "$OSTYPE" == "darwin"* ]]; then    # MAC
-    source ".setup-bash/mac.sh"
+	source ${SETUP_BASH_PATH}"/linux.sh"
+elif [[ "$OSTYPE" == "darwin"* ]]; then      # MAC
+    source ${SETUP_BASH_PATH}"/mac.sh"
 else
 	echo "Unrecognized OS:" $OSTYPE
 fi

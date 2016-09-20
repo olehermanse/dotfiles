@@ -1,6 +1,19 @@
-source /local/lib/setupfiles/bashrc
-export PATH="$PATH:/snacks/bin/"
+if [ -f "/local/lib/setupfiles/bashrc" ]; then
+    source /local/lib/setupfiles/bashrc
+fi
+
+if [ -d "/snacks/bin" ]; then
+    export PATH="$PATH:/snacks/bin/"
+fi
+
 LS_COLORS="$LS_COLORS:di=00;33"
+
+
+if hash emacs-newest 2>/dev/null; then
+    alias emacs='emacs-newest'
+fi
+
+alias copy-cfengine="rsync -r --copy-links /shared_cfengine/ ~/local_cfengine"
 
 alias emacs='emacs-newest'
 alias age='~baldersh/pub/aoe2 shm'
