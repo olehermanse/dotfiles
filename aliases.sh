@@ -1,4 +1,5 @@
 alias hw='echo "Hello World, olehermanse bashrc files are active. 1.0"'
+alias sudo='sudo '
 
 # Change dir shortcuts:
 alias root='cd /'
@@ -11,7 +12,6 @@ alias fuck='sudo $(history -p \!\!)'
 alias back='cd - #'
 alias now='date'
 alias ls='ls'
-
 
 # Network:
 alias ssh6Y='ssh -YC olehelg@rh6login.ifi.uio.no'
@@ -26,6 +26,7 @@ alias server='python -m SimpleHTTPServer'
 alias path='echo -e ${PATH//:/\\n}'
 alias del='rm -rvf'
 alias pdf='open *.pdf'
+alias py='open *.py'
 alias bashreload='source $HOME"/.bash_profile"'
 alias bashrc='atom ~/.setup-bash'
 
@@ -36,4 +37,4 @@ alias vms="vboxmanage list runningvms"
 alias pdflatex='pdflatex -shell-escape'
 
 alias devilry_sort='python ~/github/Devilry_sort/sort_deliveries.py'
-alias sync='~/edu/tools/bsync -o "-S ~/tempedu" ~/edu olehelg@login.ifi.uio.no:edu'
+alias sync='~/edu/tools/bsync -i -o "-S ~/tempedu" ~/edu olehelg@login.ifi.uio.no:edu'

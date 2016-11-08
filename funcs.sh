@@ -18,6 +18,7 @@ function triplelatex {
        mv "./.latex/_minted-"$filename ./
     fi
     pdflatex -shell-escape -output-directory "./.latex" "${1/.pdf/.tex}"
+    biber "${1/.tex/}" --input-directory .latex --output-directory .latex
     pdflatex -shell-escape -output-directory "./.latex" "${1/.pdf/.tex}"
     pdflatex -shell-escape -output-directory "./.latex" "${1/.pdf/.tex}"
     mv ./.latex/*.pdf ./

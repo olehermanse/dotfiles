@@ -18,6 +18,7 @@ source ${SETUP_BASH_PATH}"/exports.sh"
 source ${SETUP_BASH_PATH}"/aliases.sh"
 source ${SETUP_BASH_PATH}"/funcs.sh"
 source ${SETUP_BASH_PATH}"/vars.sh"
+source ${SETUP_BASH_PATH}"/cfengine/aliases.sh"
 
 # Platform dependent:
 if [[ "$OSTYPE" == "linux-gnu" ]]; then      # LINUX
