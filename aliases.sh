@@ -29,6 +29,7 @@ alias pdf='open *.pdf'
 alias py='open *.py'
 alias bashreload='source $HOME"/.bash_profile"'
 alias bashrc='atom ~/.setup-bash'
+alias bashreinstall='bash <(curl -L -s bit.ly/instsb) && source $HOME"/.bash_profile"'
 
 alias vmshut="vboxmanage list runningvms | gsed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} acpipowerbutton"
 alias vms="vboxmanage list runningvms"

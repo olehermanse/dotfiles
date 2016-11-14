@@ -15,7 +15,6 @@ fi
 
 alias copy-cfengine="rsync -r --copy-links /shared_cfengine/ ~/local_cfengine"
 
-alias emacs='emacs-newest'
 alias age='~baldersh/pub/aoe2 shm'
 alias cadence='cd ~/programs/Cadence2/ && source CRN90LP_session_IC616 && virtuoso& \r'
 alias ff='firefox&'
