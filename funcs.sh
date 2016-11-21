@@ -25,24 +25,6 @@ function triplelatex {
     mv _minted-$filename ./.latex
 }
 
-function vmstop {
-    vboxmanage controlvm "$1" acpipowerbutton
-}
-
-function vmstart {
-    vboxmanage startvm "$1" --type headless
-}
-
-function vmclone {
-    vboxmanage clonevm "VMX Clean" --name "$1" --register
-    vboxmanage startvm "$1" --type headless
-    ssh-keygen -R 192.168.56.199
-}
-
-function vmremove {
-    VBoxManage unregistervm "$1" --delete
-}
-
 # tar:
 function entar {
     target=${1%/}
