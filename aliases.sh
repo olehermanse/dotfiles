@@ -1,4 +1,4 @@
-alias hw='echo "Hello World, olehermanse bashrc files are active. 1.0"'
+alias hw='echo "Hello World, olehermanse bashrc files are active. 1.1"'
 alias sudo='sudo '
 
 # Change dir shortcuts:

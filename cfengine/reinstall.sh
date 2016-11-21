@@ -1,4 +1,4 @@
-if [[ $(id -u) -ne 0 ]] ; then echo "Please run as root" ; exit 1 ; fi
+if [ $(id -u) != 0 ] ; then echo "Please run as root" ; exit 1 ; fi
 killall cf-execd
 killall cf-serverd
 killall cf-hub
