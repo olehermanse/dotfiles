@@ -29,8 +29,8 @@ alias pdf='open *.pdf'
 alias py='open *.py'
 alias bashreload='source $HOME"/.bash_profile"'
 alias bashrc='atom ~/.setup-bash'
-if [ -d "~/github/setup-bash" ]; then
-    alias bashrc='atom ~/github/setup-bash'
+if [ -d $HOME"/github/setup-bash" ]; then
+    alias bashrc='atom '$HOME'/github/setup-bash'
 fi
 alias bashreinstall='bash <(curl -L -s bit.ly/instsb) && source $HOME"/.bash_profile"'
 
