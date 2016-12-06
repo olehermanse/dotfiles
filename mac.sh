@@ -4,7 +4,7 @@ export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export NDK_ROOT=~/Dev/NDK
 export ANT_ROOT=/usr/local/Cellar/ant
-export NEW_PROJECTS_DIR=~/github/
+export NEW_PROJECTS_DIR=~/Dev/
 
 alias logisim='open /Applications/Logisim.app'
 alias clearhistory='rm -fv ~/.bash_history && touch ~/.bash_history && unset HISTFILE'
