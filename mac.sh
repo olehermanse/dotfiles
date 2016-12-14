@@ -2,9 +2,9 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
-export NDK_ROOT=~/Dev/NDK
+export NDK_ROOT=~/code/NDK
 export ANT_ROOT=/usr/local/Cellar/ant
-export NEW_PROJECTS_DIR=~/Dev/
+export NEW_PROJECTS_DIR=~/code/
 
 alias logisim='open /Applications/Logisim.app'
 alias clearhistory='rm -fv ~/.bash_history && touch ~/.bash_history && unset HISTFILE'
