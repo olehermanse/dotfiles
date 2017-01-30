@@ -89,3 +89,12 @@ function aa {
     echo 'alias' $1 >> ~/edu/bashrc
     source ~/edu/bashrc
 }
+
+function git-force-delete {
+    if [ $# != 1 ]; then
+        echo "Specify branch name!"
+        return 1
+    fi
+    git push origin --delete $1
+    git branch -D $1
+}
