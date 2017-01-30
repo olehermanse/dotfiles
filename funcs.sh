@@ -90,11 +90,19 @@ function aa {
     source ~/edu/bashrc
 }
 
-function git-force-delete {
+function git-delete {
     if [ $# != 1 ]; then
         echo "Specify branch name!"
         return 1
     fi
-    git push origin --delete $1
-    git branch -D $1
+    git push origin --delete $1 && git branch -d $1
+}
+
+function git-delete-force {
+    if [ $# != 1 ]; then
+        echo "Specify branch name!"
+        return 1
+    fi
+    git push origin --delete $1;
+    git branch -D $1;
 }
