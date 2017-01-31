@@ -41,4 +41,4 @@ alias vms="vboxmanage list runningvms"
 alias pdflatex='pdflatex -shell-escape'
 
 alias devilry_sort='python ~/code/Devilry_sort/sort_deliveries.py'
-alias sync='~/edu/tools/bsync -i -b -o "-S ~/tempedu" ~/edu olehelg@login.ifi.uio.no:edu'
+alias sync='~/edu/tools/bsync/bsync -i -b -o "-S ~/tempedu" ~/edu olehelg@login.ifi.uio.no:edu'
