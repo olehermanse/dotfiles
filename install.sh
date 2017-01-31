@@ -1,10 +1,11 @@
 mkdir -p ~/tmp
-rm -rf ~/.setup-bash
-rm -rf ~/.setup-bash-master
 rm -rf ~/tmp/.setup-bash
 rm -rf ~/tmp/.setup-bash-master
 curl -L https://github.com/olehermanse/.setup-bash/archive/master.zip -o ~/tmp/master.zip
 unzip ~/tmp/master.zip -d ~/tmp/
+
+rm -rf ~/.setup-bash
+rm -rf ~/.setup-bash-master
 mv ~/tmp/.setup-bash-master ~/.setup-bash
 
 touch ~/.bashrc
