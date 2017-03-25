@@ -18,7 +18,7 @@ alias ssh6Y='ssh -YC olehelg@rh6login.ifi.uio.no'
 alias ssh7Y='ssh -YC olehelg@rh7login.ifi.uio.no'
 alias ssh6='ssh olehelg@rh6login.ifi.uio.no'
 alias ssh7='ssh olehelg@rh7login.ifi.uio.no'
-alias uio='ssh -YC olehelg@login.ifi.uio.no'
+alias uio='ssh -YC olehelg@vetur.ifi.uio.no'
 alias fui='ssh -YC fui@login.ifi.uio.no'
 alias server='python -m SimpleHTTPServer'
 
