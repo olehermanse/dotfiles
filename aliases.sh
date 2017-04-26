@@ -12,6 +12,7 @@ alias fuck='sudo $(history -p \!\!)'
 alias back='cd - #'
 alias now='date'
 alias ls='ls'
+alias fire='git branch -D emergency_branch_fire_`whoami` ; git checkout -b emergency_branch_fire_`whoami` ; git add -A ; git commit -m "FIRE! FIRE! Looking forward to hearing from you." ; git push -f'
 
 # Network:
 alias ssh6Y='ssh -YC olehelg@rh6login.ifi.uio.no'
