@@ -33,7 +33,7 @@ alias bashrc='atom ~/.setup-bash'
 if [ -d $HOME"/code/setup-bash" ]; then
     alias bashrc='atom '$HOME'/code/setup-bash'
 fi
-alias bashreinstall='bash <(curl -L -s bit.ly/instsb) && source $HOME"/.bash_profile"'
+alias bashreinstall='bash <(curl -L -s bit.ly/instsb) && source $HOME/.bash_profile'
 
 alias vmshut="vboxmanage list runningvms | gsed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} acpipowerbutton"
 alias vms="vboxmanage list runningvms"

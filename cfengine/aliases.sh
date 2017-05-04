@@ -63,5 +63,13 @@ function cf-local-windows-pull-make {
     && cf-local-windows-put
 }
 
+function cf-remote-windows-upload {
+    if [ $# != 1 ]; then
+        echo "Specify remote IP"
+        return 1
+    fi
+    scp -r /shared_cfengine/windows/cf_install_win Administrator@$1:
+}
+
 alias test-bootstrap=${SETUP_BASH_PATH}'/cfengine/bootstrap.sh'
 alias test-cfnet=${SETUP_BASH_PATH}'/cfengine/cfnet.sh'
