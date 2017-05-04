@@ -27,11 +27,11 @@ function cf-local-windows-autogen {
 function cf-local-windows-configure {
     cd ~/local_cfengine/windows/core \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
-       --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine \
+       --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine --with-libxml2=/var/cfengine \
        --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win \
     && cd ~/local_cfengine/windows/enterprise \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
-       --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine \
+       --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine --with-libxml2=/var/cfengine \
        --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win
 }
 
@@ -50,6 +50,12 @@ function cf-local-windows-all {
     cf-local-windows-pull \
     && cf-local-windows-autogen \
     && cf-local-windows-configure \
+    && cf-local-windows-make \
+    && cf-local-windows-put
+}
+
+function cf-local-windows-pull-make {
+    cf-local-windows-pull \
     && cf-local-windows-make \
     && cf-local-windows-put
 }
