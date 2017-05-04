@@ -3,12 +3,12 @@ alias cf-aliases='echo "cf-aliases are active"'
 alias cf-kill='bash -c "killall cf-execd ; killall cf-serverd ; killall cf-hub ; killall cf-agent"'
 alias cf-net='/var/cfengine/bin/cf-net'
 
-# alias cf-local-windows-get="rsync -r -l ~/cfengine/windows/core ~/local_cfengine/windows/core"
+# alias cf-local-windows-get="rsync -r -l /shared_cfengine/windows/core ~/local_cfengine/windows/core"
 
 # INIT local_cfengine folder:
 function cf-local {
     mkdir -p ~/cf_install_win
-    rsync -r -l ~/cfengine/ ~/local_cfengine
+    rsync -r -l /shared_cfengine/ ~/local_cfengine
 }
 
 # Get changes from shared folder using git pull - faster than rsync
@@ -47,8 +47,8 @@ function cf-local-windows-make {
 
 # Copy the binaries from local install directory to shared folder
 function cf-local-windows-put {
-    rm -r ~/cfengine/windows/cf_install_win
-    cp -r ~/cf_install_win ~/cfengine/windows/
+    rm -r /shared_cfengine/windows/cf_install_win
+    cp -r ~/cf_install_win /shared_cfengine/windows/
 }
 
 function cf-local-windows-all {
