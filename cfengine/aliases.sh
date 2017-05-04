@@ -3,42 +3,42 @@ alias cf-aliases='echo "cf-aliases are active"'
 alias cf-kill='bash -c "killall cf-execd ; killall cf-serverd ; killall cf-hub ; killall cf-agent"'
 alias cf-net='/var/cfengine/bin/cf-net'
 
-# alias cf-local-windows-get="rsync -r -l ~/cfengine/windows/core ~/cfengine_local/windows/core"
+# alias cf-local-windows-get="rsync -r -l ~/cfengine/windows/core ~/local_cfengine/windows/core"
 
 function cf-local {
     mkdir -p ~/cf_install_win
-    rsync -r -l ~/cfengine/ ~/cfengine_local
+    rsync -r -l ~/cfengine/ ~/local_cfengine
 }
 
 function cf-local-windows-pull {
-    cd ~/cfengine_local/windows/core \
+    cd ~/local_cfengine/windows/core \
     && git pull \
-    && cd ~/cfengine_local/windows/enterprise \
+    && cd ~/local_cfengine/windows/enterprise \
     && git pull
 }
 
 function cf-local-windows-autogen {
-    cd ~/cfengine_local/windows/core \
+    cd ~/local_cfengine/windows/core \
     && NO_CONFIGURE=1 ./autogen.sh \
-    && cd ~/cfengine_local/windows/enterprise \
+    && cd ~/local_cfengine/windows/enterprise \
     && NO_CONFIGURE=1 ./autogen.sh
 }
 
 function cf-local-windows-configure {
-    cd ~/cfengine_local/windows/core \
+    cd ~/local_cfengine/windows/core \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
        --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine \
        --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win \
-    && cd ~/cfengine_local/windows/enterprise \
+    && cd ~/local_cfengine/windows/enterprise \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
        --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine \
        --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win
 }
 
 function cf-local-windows-make {
-    cd ~/cfengine_local/windows/core \
+    cd ~/local_cfengine/windows/core \
     && make install \
-    && cd ~/cfengine_local/windows/enterprise \
+    && cd ~/local_cfengine/windows/enterprise \
     && make install
 }
 
