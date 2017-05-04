@@ -69,7 +69,7 @@ function cf-remote-windows-upload {
         echo "Specify remote IP"
         return 1
     fi
-    scp -r /shared_cfengine/windows/cf_install_win/bin/* Administrator@:
+    scp -r /shared_cfengine/windows/cf_install_win/bin/* Administrator@$1:
 }
 
 function cf-remote-windows-upload-bin {
