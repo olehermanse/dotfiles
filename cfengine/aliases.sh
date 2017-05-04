@@ -47,8 +47,7 @@ function cf-local-windows-make {
 
 # Copy the binaries from local install directory to shared folder
 function cf-local-windows-put {
-    rm -r /shared_cfengine/windows/cf_install_win
-    cp -r ~/cf_install_win /shared_cfengine/windows/
+    cp -r ~/cf_install_win/* /shared_cfengine/windows/cf_install_win/
 }
 
 function cf-local-windows-all {
@@ -70,7 +69,7 @@ function cf-remote-windows-upload {
         echo "Specify remote IP"
         return 1
     fi
-    scp -r /shared_cfengine/windows/cf_install_win Administrator@$1:
+    scp -r /shared_cfengine/windows/cf_install_win/bin/* Administrator@:
 }
 
 function cf-remote-windows-upload-bin {
