@@ -47,7 +47,8 @@ function cf-local-windows-make {
 
 # Copy the binaries from local install directory to shared folder
 function cf-local-windows-put {
-    cp -r ~/cf_install_win/* /shared_cfengine/windows/cf_install_win/
+    mkdir -p /shared_cfengine/windows/Cfengine/
+    cp -r ~/cf_install_win/* /shared_cfengine/windows/Cfengine/
 }
 
 function cf-local-windows-all {
@@ -69,7 +70,7 @@ function cf-remote-windows-upload {
         echo "Specify remote IP"
         return 1
     fi
-    scp -r /shared_cfengine/windows/cf_install_win/bin/* Administrator@$1:
+    scp -r /shared_cfengine/windows/Cfengine Administrator@$1:
 }
 
 function cf-remote-windows-upload-bin {
@@ -77,7 +78,7 @@ function cf-remote-windows-upload-bin {
         echo "Specify remote IP"
         return 1
     fi
-    scp -r /shared_cfengine/windows/cf_install_win/bin/cf-agent.exe Administrator@$1:
+    scp -r /shared_cfengine/windows/Cfengine/bin/cf-agent.exe Administrator@$1:
 }
 
 alias test-bootstrap=${SETUP_BASH_PATH}'/cfengine/bootstrap.sh'
