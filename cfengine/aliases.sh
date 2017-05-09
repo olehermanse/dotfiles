@@ -77,21 +77,24 @@ function cf-remote-windows-upload-agent {
     if [ $# != 1 ]; then
         echo "Specify remote IP"
         return 1
-    fiscp -r /shared_cfengine/windows/Cfengine/bin/cf-agent.exe  Administrator@$1:"\"C:/Program files/Cfengine/bin/\""
+    fi
+    scp -r /shared_cfengine/windows/Cfengine/bin/cf-agent.exe  Administrator@$1:"\"C:/Program files/Cfengine/bin/\""
 }
 
 function cf-remote-windows-upload-exe {
     if [ $# != 1 ]; then
         echo "Specify remote IP"
         return 1
-    fiscp -r /shared_cfengine/windows/Cfengine/bin/*.exe  Administrator@$1:"\"C:/Program files/Cfengine/bin/\""
+    fi
+    scp -r /shared_cfengine/windows/Cfengine/bin/*.exe  Administrator@$1:"\"C:/Program files/Cfengine/bin/\""
 }
 
 function cf-remote-windows-upload-dll {
     if [ $# != 1 ]; then
         echo "Specify remote IP"
         return 1
-    fiscp -r /shared_cfengine/windows/Cfengine/bin/*.dll  Administrator@$1:"\"C:/Program files/Cfengine/bin/\""
+    fi
+    scp -r /shared_cfengine/windows/Cfengine/bin/*.dll  Administrator@$1:"\"C:/Program files/Cfengine/bin/\""
 }
 
 
