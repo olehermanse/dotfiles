@@ -1,17 +1,25 @@
 # alias cf-local-windows-get="rsync -r -l /shared_cfengine/windows/core ~/local_cfengine/windows/core"
 
+alias cf-local-windows="cd $CF_LOCAL_WINDOWS"
+
 # INIT local_cfengine folder:
 function cf-local {
     mkdir -p ~/cf_install_win
     rsync -r -l /shared_cfengine/ ~/local_cfengine
+    export CF_LOCAL_WINDOWS="~/local_cfengine/windows"
 }
 
-# Get changes from shared folder using git pull - faster than rsync
+function force-pull {
+    git fetch origin `git rev-parse --symbolic-full-name --abbrev-ref HEAD` \
+    && git reset --hard origin/`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
+}
+
+# Get changes from shared folder using git - faster than rsync
 function cf-local-windows-pull {
     (cd ~/local_cfengine/windows/core \
-    && git pull \
+    && force-pull \
     && cd ~/local_cfengine/windows/enterprise \
-    && git pull)
+    && force-pull)
 }
 
 function cf-local-windows-autogen {
@@ -34,6 +42,7 @@ function cf-local-windows-configure {
 
 function cf-local-windows-make {
     rm -rf ~/cf_install_win
+    mkdir -p ~/cf_install_win
     (cd ~/local_cfengine/windows/core \
     && make && make install \
     && cd ~/local_cfengine/windows/enterprise \

@@ -2,15 +2,13 @@
 # GET DIRECTORY OF THIS SCRIPT (PATH):
 pushd . > /dev/null
 SETUP_BASH_PATH="${BASH_SOURCE[0]}";
-while([ -h "${SETUP_BASH_PATH}" ]); do
+while ([ -h "${SETUP_BASH_PATH}" ]); do
     cd "`dirname "${SETUP_BASH_PATH}"`"
     SETUP_BASH_PATH="$(readlink "`basename "${SETUP_BASH_PATH}"`")";
 done
 cd "`dirname "${SETUP_BASH_PATH}"`" > /dev/null
 SETUP_BASH_PATH="`pwd`";
 popd  > /dev/null
-#echo "srcipt=[${SETUP_BASH_PATH}]"
-#echo "pwd   =[`pwd`]"
 export SETUP_BASH_PATH
 
 # GENERAL
