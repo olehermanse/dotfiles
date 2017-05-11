@@ -8,36 +8,36 @@ function cf-local {
 
 # Get changes from shared folder using git pull - faster than rsync
 function cf-local-windows-pull {
-    cd ~/local_cfengine/windows/core \
+    (cd ~/local_cfengine/windows/core \
     && git pull \
     && cd ~/local_cfengine/windows/enterprise \
-    && git pull
+    && git pull)
 }
 
 function cf-local-windows-autogen {
-    cd ~/local_cfengine/windows/core \
+    (cd ~/local_cfengine/windows/core \
     && NO_CONFIGURE=1 ./autogen.sh \
     && cd ~/local_cfengine/windows/enterprise \
-    && NO_CONFIGURE=1 ./autogen.sh
+    && NO_CONFIGURE=1 ./autogen.sh)
 }
 
 function cf-local-windows-configure {
-    cd ~/local_cfengine/windows/core \
+    (cd ~/local_cfengine/windows/core \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
        --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine --with-libxml2=/var/cfengine \
        --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win \
     && cd ~/local_cfengine/windows/enterprise \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
        --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine --with-libxml2=/var/cfengine \
-       --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win
+       --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win)
 }
 
 function cf-local-windows-make {
     rm -rf ~/cf_install_win
-    cd ~/local_cfengine/windows/core \
+    (cd ~/local_cfengine/windows/core \
     && make && make install \
     && cd ~/local_cfengine/windows/enterprise \
-    && make && make install
+    && make && make install)
 }
 
 # Copy the binaries from local install directory to shared folder
