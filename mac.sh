@@ -26,3 +26,7 @@ alias clean="cleaner | wc -l"
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
+
+function atom-gpu {
+    atom $1 --enable-gpu-rasterization ;
+}
