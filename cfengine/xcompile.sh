@@ -14,6 +14,11 @@ function force-pull {
     && git reset --hard origin/`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
 }
 
+function share-pull {
+    git fetch share `git rev-parse --symbolic-full-name --abbrev-ref HEAD` \
+    && git reset --hard share/`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
+}
+
 # Get changes from shared folder using git - faster than rsync
 function cf-local-windows-pull {
     (cd ~/local_cfengine/windows/core \
