@@ -6,6 +6,7 @@ alias root='cd /'
 alias ~='cd ~'
 alias ..='cd ..'
 alias subdirs='ls -Ap | grep "/" && echo "Total:" && ls -Ap | grep "/" | wc -l'
+alias emacs='emacs --no-window'
 
 # History and time:
 alias fuck='sudo $(history -p \!\!)'
