@@ -26,7 +26,7 @@ alias server='python -m SimpleHTTPServer'
 
 alias start-work="echo Started working: `date` >> ~/work.log"
 alias stop-work="echo Stopped working: `date` >> ~/work.log"
-alias work="emacs --no-window ~/work.log"
+alias work="emacs ~/work.log"
 
 # Files:
 alias path='echo -e ${PATH//:/\\n}'
