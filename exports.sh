@@ -13,9 +13,10 @@ if [[ $- = *i* ]] && (( EUID != 0 )) ; then
     [[ -d ~/.logs/git ]] || mkdir ~/.logs/git
     export PROMPT_COMMAND='
         HIST_1=$(history 1) ;
-        echo “$(date “+%Y-%m-%d.%H:%M:%S”) $(pwd) $HIST_1” >> ~/.logs/bash/history-$(date “+%Y-%m-%d”).log ;
+        DATE=$(date "+%Y-%m-%d.%H:%M:%S")
+        echo "$DATE $(pwd) $HIST_1" >> ~/.logs/bash/history-$(date "+%Y-%m-%d").log ;
         if [[ $HIST_1 =~ "git" ]] ; then
-            echo “$(date “+%Y-%m-%d.%H:%M:%S”) $(pwd) $HIST_1” >> ~/.logs/git/history-$(date “+%Y-%m-%d”).log ;
+            echo "$DATE $(pwd) $HIST_1" >> ~/.logs/git/history-$(date "+%Y-%m-%d").log ;
         fi
     '
 fi
