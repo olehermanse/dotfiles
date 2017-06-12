@@ -7,6 +7,7 @@ export GTEST_ROOT=~/code/googletest/googletest
 export GTEST_DIR=~/code/googletest/googletest
 
 export PS1="\\h:\\w $ "
+# Log bash commands to ~/.logs/bash/ and ~/.logs/git/
 if [[ $- = *i* ]] && (( EUID != 0 )) ; then
     [[ -d ~/.logs ]] || mkdir ~/.logs
     [[ -d ~/.logs/bash ]] || mkdir ~/.logs/bash
