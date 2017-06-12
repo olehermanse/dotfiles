@@ -14,9 +14,9 @@ if [[ $- = *i* ]] && (( EUID != 0 )) ; then
     export PROMPT_COMMAND='
         HIST_1=$(history 1) ;
         DATE=$(date "+%Y-%m-%d.%H:%M:%S")
-        echo "$DATE $(pwd) $HIST_1" >> ~/.logs/bash/history-$(date "+%Y-%m-%d").log ;
+        echo "$DATE $(pwd) $HIST_1" >> ~/.logs/bash/$DATE.log ;
         if [[ $HIST_1 =~ "git" ]] ; then
-            echo "$DATE $(pwd) $HIST_1" >> ~/.logs/git/history-$(date "+%Y-%m-%d").log ;
+            echo "$DATE $(pwd) $HIST_1" >> ~/.logs/git/$DATE.log ;
         fi
     '
 fi
