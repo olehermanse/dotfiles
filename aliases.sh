@@ -24,10 +24,6 @@ alias uio='ssh -YC olehelg@vetur.ifi.uio.no'
 alias fui='ssh -YC fui@login.ifi.uio.no'
 alias server='python -m SimpleHTTPServer'
 
-alias start-work="echo Started working: `date` >> ~/work.log"
-alias stop-work="echo Stopped working: `date` >> ~/work.log"
-alias work="emacs ~/work.log"
-
 # Files:
 alias path='echo -e ${PATH//:/\\n}'
 alias del='rm -rvf'

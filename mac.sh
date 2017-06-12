@@ -30,3 +30,9 @@ fi
 function atom-gpu {
     atom $1 --enable-gpu-rasterization ;
 }
+
+alias start-work="echo Started working: `date` >> ~/work.log"
+alias stop-work="echo Stopped working: `date` >> ~/work.log"
+function work {
+    echo "$1" >> ~/work.log;
+}
