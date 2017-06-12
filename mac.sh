@@ -34,5 +34,5 @@ function atom-gpu {
 alias start-work="echo Started working: `date` >> ~/work.log"
 alias stop-work="echo Stopped working: `date` >> ~/work.log"
 function work {
-    echo '$1' >> ~/work.log;
+    echo "$1" >> ~/work.log;
 }
