@@ -3,10 +3,16 @@
 alias cf-local-windows="cd $CF_LOCAL_WINDOWS"
 
 # INIT local_cfengine folder:
+
+function cf-local-perms {
+    chmod -R 700 ~/local_cfengine/core
+}
+
 function cf-local {
     mkdir -p ~/cf_install_win
     rsync -r -l /shared_cfengine/ ~/local_cfengine
     export CF_LOCAL_WINDOWS="~/local_cfengine/windows"
+    cf-local-perms
 }
 
 function force-pull {
