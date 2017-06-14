@@ -27,25 +27,25 @@ function share-pull {
 
 # Get changes from shared folder using git - faster than rsync
 function cf-local-windows-pull {
-    (cd ~/local_cfengine/windows/core \
-    && force-pull \
-    && cd ~/local_cfengine/windows/enterprise \
-    && force-pull)
+    (cd ~/local_cfengine/core \
+    && share-pull \
+    && cd ~/local_cfengine/enterprise \
+    && share-pull)
 }
 
 function cf-local-windows-autogen {
-    (cd ~/local_cfengine/windows/core \
+    (cd ~/local_cfengine/core \
     && NO_CONFIGURE=1 ./autogen.sh \
-    && cd ~/local_cfengine/windows/enterprise \
+    && cd ~/local_cfengine/enterprise \
     && NO_CONFIGURE=1 ./autogen.sh)
 }
 
 function cf-local-windows-configure {
-    (cd ~/local_cfengine/windows/core \
+    (cd ~/local_cfengine/core \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
        --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine --with-libxml2=/var/cfengine \
        --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win \
-    && cd ~/local_cfengine/windows/enterprise \
+    && cd ~/local_cfengine/enterprise \
     && ./configure --with-pcre=/var/cfengine --with-openssl=/var/cfengine \
        --with-lmdb=/var/cfengine --with-pthreads=/var/cfengine --with-libxml2=/var/cfengine \
        --host x86_64-w64-mingw32 --prefix=$HOME/cf_install_win)
@@ -54,9 +54,9 @@ function cf-local-windows-configure {
 function cf-local-windows-make {
     rm -rf ~/cf_install_win
     mkdir -p ~/cf_install_win
-    (cd ~/local_cfengine/windows/core \
+    (cd ~/local_cfengine/core \
     && make && make install \
-    && cd ~/local_cfengine/windows/enterprise \
+    && cd ~/local_cfengine/enterprise \
     && make && make install)
 }
 
