@@ -44,6 +44,7 @@ alias pdflatex='pdflatex -shell-escape'
 
 alias devilry_sort='python ~/code/Devilry_sort/sort_deliveries.py'
 alias sync='~/edu/tools/bsync/bsync -i -y -o "-S ~/tempedu" ~/edu olehelg@login.ifi.uio.no:edu'
+alias wsync='~/edu/tools/bsync/bsync -i -y -o "-S ~/tempresults" /mnt/c/Users/olehermanse/code/nanoelectronics/data/results olehelg@login.ifi.uio.no:edu/msc/nano/data/results'
 
 alias poop='export PS1="💩  "'
 alias prompt-micro='export PS1="$ "'
