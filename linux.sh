@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if [ -f "/local/lib/setupfiles/bashrc" ]; then
     source /local/lib/setupfiles/bashrc
 fi
@@ -21,8 +22,7 @@ alias ff='firefox&'
 alias logisim='java -jar ~/programs/logisim-generic-2.7.1.jar&'
 alias g='gedit&'
 
-alias fixweb='chmod -R a+rX ~/www_docs'
-alias publish='python3 ~/edu/website/compile.py && rm -rf ~/www_docs && cp -R ~/edu/website ~/www_docs && chmod -R a+rX ~/www_docs && chmod -R a+rX ~/www_docs'
+alias publish='python3 ~/edu/website/compile.py && rm -rf ~/www_docs && cp -R ~/edu/website ~/www_docs && chmod -R a+rX ~/www_docs'
 
 function cleaner {
     find . -type d -regex ".*__MACOSX" -exec rm -rvf {} +
