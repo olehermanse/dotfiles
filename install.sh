@@ -8,6 +8,8 @@ rm -rf ~/.setup-bash
 rm -rf ~/.setup-bash-master
 mv ~/tmp/.setup-bash-master ~/.setup-bash
 
+cp ~/.setup-bash/.tmux.conf ~/.tmux.conf
+
 touch ~/.bashrc
 touch ~/.bash_profile
 grep -q -F 'source ~/.setup-bash/start.sh' ~/.bashrc || echo 'source ~/.setup-bash/start.sh' >> ~/.bashrc
