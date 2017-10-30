@@ -39,7 +39,7 @@ alias bashreinstall='bash <(curl -L -s bit.ly/instsb) && source $HOME/.bash_prof
 alias vmshut="vboxmanage list runningvms | gsed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} acpipowerbutton"
 alias vms="vboxmanage list runningvms"
 
-alias tmux4="tmux new-session \; split-window -h \; split-window -v \; attach"
+alias tmux4="tmux new-session \; split-window -v \; split-window -h \; select-pane -t 0 \; split-window -h \; select-pane -t 0 \; attach"
 
 alias pdflatex='pdflatex -shell-escape'
 
