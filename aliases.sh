@@ -40,6 +40,8 @@ alias vmshut="vboxmanage list runningvms | gsed -r 's/.*\{(.*)\}/\1/' | xargs -L
 alias vms="vboxmanage list runningvms"
 
 alias tmux4="tmux new-session \; split-window -v \; split-window -h \; select-pane -t 0 \; split-window -h \; select-pane -t 0 \; attach"
+alias ohzb="cd /z && bash scripts/backend_install.sh 192.168.10.10"
+alias ohzc="cd /z && bash scripts/client_install.sh 192.168.10.10"
 
 alias pdflatex='pdflatex -shell-escape'
 
