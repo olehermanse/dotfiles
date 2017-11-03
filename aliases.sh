@@ -30,7 +30,7 @@ alias del='rm -rvf'
 alias pdf='open *.pdf'
 alias py='open *.py'
 alias bashreload='source $HOME"/.bash_profile"'
-alias bashrc='atom ~/.setup-bash'
+alias bashrc='atom ~/.dotfiles_olehermanse'
 if [ -d $HOME"/code/setup-bash" ]; then
     alias bashrc='atom '$HOME'/code/setup-bash'
 fi

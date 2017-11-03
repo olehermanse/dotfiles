@@ -2,5 +2,5 @@
 One line install:
 
 ```
-bash <(curl -L -s bit.ly/instsb)
+curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/install.sh | bash
 ```
