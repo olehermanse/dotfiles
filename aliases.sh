@@ -31,8 +31,8 @@ alias pdf='open *.pdf'
 alias py='open *.py'
 alias bashreload='source $HOME"/.bash_profile"'
 alias bashrc='atom ~/.dotfiles_olehermanse'
-if [ -d $HOME"/code/setup-bash" ]; then
-    alias bashrc='atom '$HOME'/code/setup-bash'
+if [ -d $HOME"/code/dotfiles" ]; then
+    alias bashrc='atom '$HOME'/code/dotfiles'
 fi
 alias bashreinstall='bash <(curl -L -s bit.ly/instsb) && source $HOME/.bash_profile'
 
