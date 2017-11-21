@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 function bashuninstall {
-    source_line='source ~/.dotfiles_olehermanse/start.sh'
     sed -i.bu "/.dotfiles_olehermanse/d" $HOME/.bashrc && rm -f $HOME/.bashrc.bu
     sed -i.bu "/.dotfiles_olehermanse/d" $HOME/.bash_profile && rm -f $HOME/.bashrc.bu
 
