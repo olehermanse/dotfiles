@@ -1,2 +1,2 @@
-source ${SETUP_BASH_PATH}"/cfengine/aliases.sh"
-source ${SETUP_BASH_PATH}"/cfengine/xcompile.sh"
+source ${DOTFILES_PATH}"/cfengine/aliases.sh"
+source ${DOTFILES_PATH}"/cfengine/xcompile.sh"

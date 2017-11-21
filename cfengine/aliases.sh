@@ -1,4 +1,4 @@
-alias cf-reinstall=${SETUP_BASH_PATH}'/cfengine/reinstall.sh'
+alias cf-reinstall=${DOTFILES_PATH}'/cfengine/reinstall.sh'
 alias cf-aliases='echo "cf-aliases are active"'
 alias cf-kill='bash -c "killall cf-execd ; killall cf-serverd ; killall cf-hub ; killall cf-agent"'
 alias cf-procs='ps aux | grep [c]f-'
@@ -13,5 +13,5 @@ alias cf-runagent="/var/cfengine/bin/cf-runagent"
 alias cf-serverd="/var/cfengine/bin/cf-serverd"
 alias cf-upgrade="/var/cfengine/bin/cf-upgrade"
 
-alias test-bootstrap=${SETUP_BASH_PATH}'/cfengine/bootstrap.sh'
-alias test-cfnet=${SETUP_BASH_PATH}'/cfengine/cfnet.sh'
+alias test-bootstrap=${DOTFILES_PATH}'/cfengine/bootstrap.sh'
+alias test-cfnet=${DOTFILES_PATH}'/cfengine/cfnet.sh'

@@ -2,28 +2,28 @@
 # http://stackoverflow.com/a/12197518
 # GET DIRECTORY OF THIS SCRIPT (PATH):
 pushd . > /dev/null
-SETUP_BASH_PATH="${BASH_SOURCE[0]}";
-while ([ -h "${SETUP_BASH_PATH}" ]); do
-    cd "`dirname "${SETUP_BASH_PATH}"`" || exit "CANNOT CD: `dirname "${SETUP_BASH_PATH}"`"
-    SETUP_BASH_PATH="$(readlink "`basename "${SETUP_BASH_PATH}"`")";
+DOTFILES_PATH="${BASH_SOURCE[0]}";
+while ([ -h "${DOTFILES_PATH}" ]); do
+    cd "`dirname "${DOTFILES_PATH}"`" || exit "CANNOT CD: `dirname "${DOTFILES_PATH}"`"
+    DOTFILES_PATH="$(readlink "`basename "${DOTFILES_PATH}"`")";
 done
-cd "`dirname "${SETUP_BASH_PATH}"`" > /dev/null || exit "CANNOT CD: `dirname "${SETUP_BASH_PATH}"`"
-SETUP_BASH_PATH="`pwd`";
+cd "`dirname "${DOTFILES_PATH}"`" > /dev/null || exit "CANNOT CD: `dirname "${DOTFILES_PATH}"`"
+DOTFILES_PATH="`pwd`";
 popd  > /dev/null
-export SETUP_BASH_PATH
+export DOTFILES_PATH
 
 # GENERAL
-source ${SETUP_BASH_PATH}"/exports.sh"
-source ${SETUP_BASH_PATH}"/aliases.sh"
-source ${SETUP_BASH_PATH}"/funcs.sh"
-source ${SETUP_BASH_PATH}"/vars.sh"
-source ${SETUP_BASH_PATH}"/cfengine/start.sh"
+source ${DOTFILES_PATH}"/exports.sh"
+source ${DOTFILES_PATH}"/aliases.sh"
+source ${DOTFILES_PATH}"/funcs.sh"
+source ${DOTFILES_PATH}"/vars.sh"
+source ${DOTFILES_PATH}"/cfengine/start.sh"
 
 # Platform dependent:
 if [[ "$OSTYPE" == "linux-gnu" ]]; then      # LINUX
-	source ${SETUP_BASH_PATH}"/linux.sh"
+	source ${DOTFILES_PATH}"/linux.sh"
 elif [[ "$OSTYPE" == "darwin"* ]]; then      # MAC
-    source ${SETUP_BASH_PATH}"/mac.sh"
+    source ${DOTFILES_PATH}"/mac.sh"
 else
 	echo "Unrecognized OS:" $OSTYPE
 fi
