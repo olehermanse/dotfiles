@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 alias hw='echo "Hello World, olehermanse bashrc files are active. 1.1"'
 alias sudo='sudo '
 
@@ -34,7 +35,7 @@ alias bashrc='atom ~/.dotfiles_olehermanse'
 if [ -d $HOME"/code/dotfiles" ]; then
     alias bashrc='atom '$HOME'/code/dotfiles'
 fi
-alias bashreinstall='bash <(curl -L -s bit.ly/instsb) && source $HOME/.bash_profile'
+alias bashreinstall='curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/install.sh | bash'
 
 alias vmshut="vboxmanage list runningvms | gsed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} acpipowerbutton"
 alias vms="vboxmanage list runningvms"
