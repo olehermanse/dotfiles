@@ -31,6 +31,7 @@ alias del='rm -rvf'
 alias pdf='open *.pdf'
 alias py='open *.py'
 alias bashreload='source $HOME"/.bash_profile"'
+alias bashdeps='bash $HOME"/.dotfiles_olehermanse/deps.sh"'
 alias bashrc='atom ~/.dotfiles_olehermanse'
 if [ -d $HOME"/code/dotfiles" ]; then
     alias bashrc='atom '$HOME'/code/dotfiles'

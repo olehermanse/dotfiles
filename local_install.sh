@@ -6,6 +6,10 @@ rm -rf ~/.dotfiles_olehermanse-master
 cp -r ./ ~/.dotfiles_olehermanse/
 
 cp ~/.dotfiles_olehermanse/.tmux.conf ~/.tmux.conf
+# Platform dependent:
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    cat ~/.dotfiles_olehermanse/.tmux-osx.conf >> ~/.tmux.conf
+fi
 
 touch ~/.bashrc
 touch ~/.bash_profile
