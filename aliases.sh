@@ -62,4 +62,4 @@ alias prompt-time-mini='export PS1="\\t \\W $ "'
 alias prompt-time-standard='export PS1="\\t \\h:\\w $ "'
 alias prompt-time-full='export PS1="\\t \\h:\\w $ "'
 
-alias xi='open /Applications/XiEditor.app/'
+alias xi='open /Applications/XiEditor.app/ --args'
