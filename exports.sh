@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+bind TAB:menu-complete
 export PYTHONSTARTUP=~/edu/.pystartup
 
 export CLICOLOR=1
