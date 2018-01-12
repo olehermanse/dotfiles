@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-bind TAB:menu-complete
 export PYTHONSTARTUP=~/edu/.pystartup
 
 export CLICOLOR=1
@@ -26,8 +25,3 @@ if [[ $- = *i* ]] ; then
         fi
     '
 fi
-
-bind "set mark-symlinked-directories on"
-bind "TAB:menu-complete"
-bind "set show-all-if-ambiguous on"
-bind "set menu-complete-display-prefix on"
