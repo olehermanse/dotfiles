@@ -25,3 +25,10 @@ if [[ $- = *i* ]] ; then
         fi
     '
 fi
+
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+bind "set menu-complete-display-prefix on"
+bind "set mark-symlinked-directories on"
+bind "set show-all-if-unmodified on"
+bind "TAB: menu-complete"
