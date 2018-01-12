@@ -26,3 +26,8 @@ if [[ $- = *i* ]] ; then
         fi
     '
 fi
+
+bind "set mark-symlinked-directories on"
+bind "TAB:menu-complete"
+bind "set show-all-if-ambiguous on"
+bind "set menu-complete-display-prefix on"
