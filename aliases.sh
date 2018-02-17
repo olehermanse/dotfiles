@@ -53,7 +53,8 @@ alias wsync='~/edu/tools/bsync/bsync -i -y -o "-S ~/tempdata" /mnt/c/Users/olehe
 
 alias poop='export PS1="💩  "'
 alias prompt-micro='export PS1="$ "'
-alias prompt-mini='export PS1="\\W $ "'
+alias prompt-host='export PS1="\\h $ "'
+alias prompt-dir='export PS1="\\W $ "'
 alias prompt-standard='export PS1="\\u@\\h \\W $ "'
 alias prompt-full='export PS1="\\h:\\w $ "'
 
