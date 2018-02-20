@@ -31,10 +31,11 @@ function atom-gpu {
 }
 
 function work {
-    if   [ $1 == "start" ] ; then echo "`date`: $*" >> ~/work.log ;
-    elif [ $1 == "stop" ]  ; then echo "`date`: $*" >> ~/work.log ;
+    TS="`date +"%a"` $TIME"
+    if   [ $1 == "start" ] ; then echo "`$TS`: $*" >> ~/work.log ;
+    elif [ $1 == "stop" ]  ; then echo "`$TS`: $*" >> ~/work.log ;
     elif [ $# -eq 1 ]      ; then
         if [ $1 == "show" ] ; then less ~/work.log ;
         else echo "Invalid command \'$1\'" && return 1 ; fi
-    else echo "`date`: $*" >> ~/work.log ; fi
+    else echo "`$TS`: $*" >> ~/work.log ; fi
 }
