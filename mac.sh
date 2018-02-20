@@ -30,8 +30,11 @@ function atom-gpu {
     atom $1 --enable-gpu-rasterization ;
 }
 
-alias start-work="echo Started working: `date` >> ~/work.log"
-alias stop-work="echo Stopped working: `date` >> ~/work.log"
 function work {
-    echo "$1" >> ~/work.log;
+    if   [ $1 == "start" ] ; then echo "`date`: $*" >> ~/work.log ;
+    elif [ $1 == "stop" ]  ; then echo "`date`: $*" >> ~/work.log ;
+    elif [ $# -eq 1 ]      ; then
+        if [ $1 == "show" ] ; then less ~/work.log ;
+        else echo "Invalid command \'$1\'" && return 1 ; fi
+    else echo "`date`: $*" >> ~/work.log ; fi
 }
