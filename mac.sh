@@ -31,6 +31,7 @@ function atom-gpu {
 }
 
 function work {
+    TIME="$(date "+%Y-%m-%d.%H:%M:%S")"
     TS="`date +"%a"` $TIME"
     if   [ $1 == "start" ] ; then echo "$TS: $*" >> ~/.logs/work.log ;
     elif [ $1 == "stop" ]  ; then echo "$TS: $*" >> ~/.logs/work.log ;
