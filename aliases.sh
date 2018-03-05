@@ -25,6 +25,7 @@ alias fui='ssh -YC fui@login.ifi.uio.no'
 alias server='python -m SimpleHTTPServer'
 
 # Files:
+alias emacs='emacs -nw -q'
 alias path='echo -e ${PATH//:/\\n}'
 alias del='rm -rvf'
 alias pdf='open *.pdf'
