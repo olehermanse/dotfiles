@@ -142,3 +142,11 @@ function git-delete-force {
     git push origin --delete $1;
     git branch -D $1;
 }
+
+function gc {
+    if [ $# != 2 ]; then
+        echo "Specify user / org and repo"
+        return 1
+    fi
+    git clone git@github.com:$1/$2.git
+}
