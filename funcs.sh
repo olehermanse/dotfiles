@@ -107,6 +107,10 @@ function feedback2 {
 }
 alias fb2='feedback2'
 
+function titc {
+    tit $@ | pbcopy
+}
+
 function aa {
     echo 'alias' $1 >> ~/edu/bashrc
     source ~/edu/bashrc
