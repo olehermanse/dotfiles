@@ -88,6 +88,11 @@ with open(filename, "r") as f:
             week += delta
 
             data_line(line)
+
+if week.total_seconds() > 0:
+    file_line(str_from_delta(week))
+    file_line("")
+
 file_line("Total: " + str_from_delta(total))
 try:
     with open(sys.argv[2], "w") as f:
