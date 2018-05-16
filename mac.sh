@@ -36,7 +36,7 @@ function work {
     if   [ $1 == "start" ] ; then echo "$TS: $*" >> ~/.logs/work.log ;
     elif [ $1 == "stop" ]  ; then echo "$TS: $*" >> ~/.logs/work.log ;
     elif [ $# -eq 1 ]      ; then
-        if [ $1 == "show" ] ; then less ~/.logs/work.log ;
+        if [ $1 == "show" ] ; then counting.py ~/.logs/work.log | less ;
         else echo "Invalid command \'$1\'" && return 1 ; fi
     else echo "$TS: $*" >> ~/.logs/work.log ; fi
 }

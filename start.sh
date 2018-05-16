@@ -12,6 +12,9 @@ DOTFILES_PATH="`pwd`";
 popd  > /dev/null
 export DOTFILES_PATH
 
+export PATH=${PATH}:${DOTFILES_PATH}/bin
+chmod u+x ${DOTFILES_PATH}/bin/counting.py
+
 # GENERAL
 source ${DOTFILES_PATH}"/exports.sh"
 source ${DOTFILES_PATH}"/aliases.sh"
