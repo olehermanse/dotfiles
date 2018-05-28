@@ -116,6 +116,18 @@ function aa {
     source ~/edu/bashrc
 }
 
+function git-delete-safe {
+    if [ $# != 1 ]; then
+        echo "Specify branch name!"
+        return 1
+    fi
+    git branch -d $1 && git push origin --delete $1
+    if [ $? != 0 ]; then
+        echo "An error has occured, most likely branch is not fully merged or remote doesn't exist"
+        return 1
+    fi
+}
+
 function git-delete {
     if [ $# != 1 ]; then
         echo "Specify branch name!"
