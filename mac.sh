@@ -33,10 +33,24 @@ function atom-gpu {
 function work {
     TIME="$(date "+%Y-%m-%d.%H:%M:%S")"
     TS="`date +"%a"` $TIME"
-    if   [ $1 == "start" ] ; then echo "$TS: $*" >> ~/.logs/work.log ;
-    elif [ $1 == "stop" ]  ; then echo "$TS: $*" >> ~/.logs/work.log ;
-    elif [ $# -eq 1 ]      ; then
-        if [ $1 == "show" ] ; then counting.py ~/.logs/work.log | less ;
-        else echo "Invalid command \'$1\'" && return 1 ; fi
-    else echo "$TS: $*" >> ~/.logs/work.log ; fi
+    if   [ $1 == "start" ]
+    then
+        echo "$TS: $*" >> ~/.logs/work.log ;
+        echo "$TS: $*" >> ~/.logs/work.log.backup ;
+    elif [ $1 == "stop" ]
+    then
+        echo "$TS: $*" >> ~/.logs/work.log ;
+        echo "$TS: $*" >> ~/.logs/work.log.backup ;
+    elif [ $# -eq 1 ]
+    then
+        if [ $1 == "show" ]
+        then
+            counting.py ~/.logs/work.log > ~/.logs/work.log.tmp && cp ~/.logs/work.log.tmp ~/.logs/work.log ;
+            less ~/.logs/work.log ;
+        else
+            echo "Invalid command \'$1\'" && return 1
+        fi
+    else
+        echo "$TS: $*" >> ~/.logs/work.log
+    fi
 }
