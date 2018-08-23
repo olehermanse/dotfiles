@@ -16,6 +16,8 @@ apt-get install -y make
 apt-get install -y flex
 apt-get install -y bison
 
+cd /home/ubuntu/
+
 git clone https://github.com/mirrorer/afl.git
 git clone https://github.com/cfengine/core.git
 
@@ -30,11 +32,16 @@ echo core >/proc/sys/kernel/core_pattern
 
 cd core
 ./autogen.sh --enable-debug
-make -j16
+make -j8
 make install
 cd ..
 
+rm -rf /home/ubuntu/afl_outputs/
 mkdir /home/ubuntu/afl_inputs/
 mkdir /home/ubuntu/afl_outputs/
 
 cp /home/ubuntu/core/examples/main.cf /home/ubuntu/afl_inputs/
+cp /home/ubuntu/core/examples/mergedata.cf /home/ubuntu/afl_inputs/
+
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_output/ -- /var/cfengine/bin/cf-promises @@
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_output/ -- /var/cfengine/bin/cf-agent -K @@
