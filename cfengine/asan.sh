@@ -11,5 +11,8 @@ git clone https://github.com/cfengine/core.git
 
 cd core
 ./autogen.sh --enable-debug
-make CFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address -pthread"
-cd ..
+make CFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address -pthread" -j8
+cd tests/unit
+make CFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address -pthread" -j8 check
+
+cd /home/ubuntu
