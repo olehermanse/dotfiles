@@ -1,7 +1,7 @@
 #/usr/bin/env bash
 
 # Run this script as root on an AWS Ubuntu 16 VM, you can curl it from GitHub:
-# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/bin/fuzz.sh | bash
+# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/cfengine/fuzz.sh | bash
 
 apt-get update -y
 apt-get upgrade -y
