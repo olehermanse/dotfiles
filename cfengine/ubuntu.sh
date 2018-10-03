@@ -14,12 +14,3 @@ apt-get install -y libpam0g-dev
 apt-get install -y make
 apt-get install -y flex
 apt-get install -y bison
-
-cd /home/ubuntu/
-
-git clone https://github.com/cfengine/core.git
-
-cd core
-./autogen.sh --enable-debug
-make -j8
-cd ..
