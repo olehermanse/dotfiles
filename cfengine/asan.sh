@@ -13,6 +13,6 @@ cd core
 ./autogen.sh --enable-debug
 make CFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address -pthread" -j8
 cd tests/unit
-make CFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address -pthread" -j8 check
+make CFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address -pthread" -j8 check 2>&1 | tee /home/ubuntu/unit_tests.txt
 
 cd /home/ubuntu
