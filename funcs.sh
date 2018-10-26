@@ -88,6 +88,9 @@ function swap-files {
     rm -f /tmp/swap-files-temp.txt1
 }
 
+function cherry {
+    git cherry-pick -x $1
+}
 
 alias fb='feedback'
 function feedback2 {
