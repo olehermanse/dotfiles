@@ -2,7 +2,6 @@
 # curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/cfengine/ubuntu.sh | bash
 
 apt-get update -y
-apt-get upgrade -y
 
 apt-get install -y python
 apt-get install -y autoconf
