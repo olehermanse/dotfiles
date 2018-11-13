@@ -16,7 +16,7 @@ alias cf-upgrade="/var/cfengine/bin/cf-upgrade"
 alias test-bootstrap=${DOTFILES_PATH}'/cfengine/bootstrap.sh'
 alias test-cfnet=${DOTFILES_PATH}'/cfengine/cfnet.sh'
 
-alis ci-core="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core"
-alis ci-oss="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles"
-alis ci-ent="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent"
-alis ci-nova="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --nova"
+alias ci-core="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core"
+alias ci-oss="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles"
+alias ci-ent="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent"
+alias ci-nova="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --nova"
