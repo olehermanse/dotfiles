@@ -10,3 +10,6 @@ alias ci-core="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py -
 alias ci-oss="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles"
 alias ci-ent="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent"
 alias ci-nova="cd /northern.tech/cfengine/starter_pack && python3 cfbuilder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --nova"
+
+# Git:
+alias cf-git-delete-merged='git branch --merged | egrep -v "(^\*|master|3.12.x|3.10.x|3.7.x)$" | xargs git branch -d'

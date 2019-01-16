@@ -13,6 +13,8 @@ alias fuck='sudo $(history -p \!\!)'
 alias back='cd - #'
 alias now='date'
 alias ls='ls'
+
+# Git:
 alias fire='X="emergency_branch_fire_`whoami`_`date +%s`" ; git checkout -b $X ; git add -A ; git commit -m "FIRE! FIRE! Looking forward to hearing from you." ; git push'
 
 # Network:
