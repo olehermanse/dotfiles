@@ -33,7 +33,7 @@ echo core >/proc/sys/kernel/core_pattern
 
 cd core
 ./autogen.sh --enable-debug
-make -j8
+make -j16
 make install
 cd ..
 
@@ -45,5 +45,5 @@ cp /home/ubuntu/core/examples/main.cf /home/ubuntu/afl_inputs/
 cp /home/ubuntu/core/examples/mergedata.cf /home/ubuntu/afl_inputs/
 
 # Commands for fuzzing, cf-promises is safer (has less side effects):
-# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_output/ -- /var/cfengine/bin/cf-promises @@
-# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_output/ -- /var/cfengine/bin/cf-agent -K @@
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -- /var/cfengine/bin/cf-promises @@
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -- /var/cfengine/bin/cf-agent -K @@
