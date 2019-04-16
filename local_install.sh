@@ -3,9 +3,8 @@
 rm -rf ~/.dotfiles_olehermanse
 rm -rf ~/.dotfiles_olehermanse-master
 
-export DOTFILES_PATH="~/.dotfiles_olehermanse/"
-cp -r ./ ${DOTFILES_PATH}
-chmod u+x ${DOTFILES_PATH}/bin/counting.py
+cp -r ./ ~/.dotfiles_olehermanse
+chmod u+x ~/.dotfiles_olehermanse/bin/counting.py
 
 cp ~/.dotfiles_olehermanse/.tmux.conf ~/.tmux.conf
 # Platform dependent:
