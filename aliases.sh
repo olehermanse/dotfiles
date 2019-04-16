@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-alias hw='echo "Hello World, olehermanse bashrc files are active. 1.1"'
+alias hw='echo "Hello World, olehermanse bashrc files are active. v1.2"'
 alias sudo='sudo '
 
 # Change dir shortcuts:
@@ -16,15 +16,6 @@ alias ls='ls'
 
 # Git:
 alias fire='X="emergency_branch_fire_`whoami`_`date +%s`" ; git checkout -b $X ; git add -A ; git commit -m "FIRE! FIRE! Looking forward to hearing from you." ; git push'
-
-# Network:
-alias ssh6Y='ssh -YC olehelg@rh6login.ifi.uio.no'
-alias ssh7Y='ssh -YC olehelg@rh7login.ifi.uio.no'
-alias ssh6='ssh olehelg@rh6login.ifi.uio.no'
-alias ssh7='ssh olehelg@rh7login.ifi.uio.no'
-alias uio='ssh -YC olehelg@vetur.ifi.uio.no'
-alias fui='ssh -YC fui@login.ifi.uio.no'
-alias server='python -m SimpleHTTPServer'
 
 # Files:
 alias emacs='emacs -nw -q'
@@ -54,15 +45,21 @@ alias sync='~/edu/tools/bsync/bsync -i -y -o "-S ~/tempedu" ~/edu olehelg@login.
 alias wsync='~/edu/tools/bsync/bsync -i -y -o "-S ~/tempdata" /mnt/c/Users/olehermanse/code/nanoelectronics/data olehelg@login.ifi.uio.no:edu/msc/nano/data'
 
 alias poop='export PS1="💩  "'
-alias prompt-micro='export PS1="$ "'
+
+alias prompt='export PS1="$ "'
+alias prompt-user='export PS1="\\u $ "'
 alias prompt-host='export PS1="\\h $ "'
 alias prompt-dir='export PS1="\\W $ "'
-alias prompt-standard='export PS1="\\u@\\h \\W $ "'
-alias prompt-full='export PS1="\\h:\\w $ "'
+alias prompt-user-host='export PS1="\\u@\\h $ "'
+alias prompt-user-host-dir='export PS1="\\u@\\h:\\W $ "'
+alias prompt-host-dir='export PS1="\\h:\\w $ "'
 
-alias prompt-time-micro='export PS1="\\t $ "'
-alias prompt-time-mini='export PS1="\\t \\W $ "'
-alias prompt-time-standard='export PS1="\\t \\h:\\w $ "'
-alias prompt-time-full='export PS1="\\t \\h:\\w $ "'
+alias prompt-ts='export PS1="\\t $ "'
+alias prompt-ts-user='export PS1="\\t \\u $ "'
+alias prompt-ts-host='export PS1="\\t \\h $ "'
+alias prompt-ts-dir='export PS1="\\t \\W $ "'
+alias prompt-ts-user-host='export PS1="\\t \\u@\\h $ "'
+alias prompt-ts-user-host-dir='export PS1="\\t \\u@\\h:\\W $ "'
+alias prompt-ts-host-dir='export PS1="\\t \\h:\\w $ "'
 
 alias xi='open -a "XiEditor"'
