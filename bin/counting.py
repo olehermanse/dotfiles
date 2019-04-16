@@ -24,15 +24,21 @@ def str_from_delta(time):
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 8)
     days, hours, minutes, seconds = ints(days, hours, minutes, seconds)
-    return "{} work days, {} hours, {} minutes, {} seconds".format(
-        days, hours, minutes, seconds)
+    return "{} work days, {} hours, {} minutes".format(days, hours, minutes)
 
 
 def hours_from_delta(time):
+    negative = time < timedelta(0)
+    if negative:
+        time = time * -1
     seconds = time.total_seconds()
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     hours, minutes = ints(hours, minutes)
+    if negative:
+        hours = hours * -1
+    if minutes < 10:
+        minutes = "0" + str(minutes)
     return "{}:{} hours".format(hours, minutes)
 
 
@@ -54,11 +60,27 @@ def file_line(line):
 
 
 total = timedelta(0)
+overtime = timedelta(0)
 days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 day_index = 0
 week = timedelta(0)
+days_this_week = []
 
 timestamp = None
+
+
+def week_done():
+    global week
+    global days_this_week
+    global overtime
+    added_overtime = week - timedelta(hours=len(days_this_week) * 8)
+    file_line("Week: {} ({} overtime)".format(
+        str_from_delta(week), hours_from_delta(added_overtime)))
+    file_line("")
+    overtime += added_overtime
+    week = timedelta(0)
+    days_this_week = []
+
 
 with open(filename, "r") as f:
     for line in f:
@@ -85,14 +107,17 @@ with open(filename, "r") as f:
         timestamp = new_timestamp
         assert timestamp == str_from_time(str_to_time(timestamp))
 
+        now = str_to_time(timestamp)
         if command == "start":
             # Produce end of week summary if necessary:
             new_index = days.index(day)
             if week > timedelta(0) and (new_index < day_index
                                         or days_passed >= 5):
-                file_line(str_from_delta(week))
-                file_line("")
-                week = timedelta(0)
+                week_done()
+
+            if (day not in ["Sat", "Sun"] and day not in days_this_week
+                    and 9 <= now.hour <= 18):
+                days_this_week.append(day)
 
             # Add start line to data:
             data_line(line)
@@ -100,8 +125,10 @@ with open(filename, "r") as f:
             assert command == "stop"
             day_index = new_index
 
+            if (day not in ["Sat", "Sun"] and day not in days_this_week
+                    and 9 <= now.hour <= 18):
+                days_this_week.append(day)
             then = str_to_time(data_lines[-1].split()[1][:-1])
-            now = str_to_time(timestamp)
             delta = now - then
 
             line = " ".join(words[0:3])
@@ -112,10 +139,10 @@ with open(filename, "r") as f:
             data_line(line)
 
 if week.total_seconds() > 0:
-    file_line(str_from_delta(week))
-    file_line("")
+    week_done()
 
 file_line("Total: " + str_from_delta(total))
+file_line("Overtime: " + str_from_delta(overtime))
 try:
     with open(sys.argv[2], "w") as f:
         for line in file_lines:

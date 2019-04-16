@@ -4,6 +4,7 @@ rm -rf ~/.dotfiles_olehermanse
 rm -rf ~/.dotfiles_olehermanse-master
 
 cp -r ./ ~/.dotfiles_olehermanse/
+chmod u+x ${DOTFILES_PATH}/bin/counting.py
 
 cp ~/.dotfiles_olehermanse/.tmux.conf ~/.tmux.conf
 # Platform dependent:
