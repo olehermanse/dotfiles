@@ -118,6 +118,7 @@ with open(filename, "r") as f:
         now = str_to_time(timestamp)
         if command == "skip":
             skip_days.append(day)
+            data_line(line)
         elif command == "start":
             # Produce end of week summary if necessary:
             new_index = days.index(day)
