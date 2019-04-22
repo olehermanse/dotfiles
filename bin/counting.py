@@ -65,6 +65,9 @@ days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 day_index = 0
 week = timedelta(0)
 days_this_week = []
+skip_days = []
+
+commands = ["start", "stop", "skip"]
 
 timestamp = None
 
@@ -91,7 +94,7 @@ with open(filename, "r") as f:
             file_line(line)
             continue
         words = line.split()
-        if len(words) < 3 or words[2] not in ["start", "stop"]:
+        if len(words) < 3 or words[2] not in commands:
             continue
 
         day = words[0]

@@ -41,6 +41,10 @@ function work {
     then
         echo "$TS: $*" >> ~/.logs/work.log ;
         echo "$TS: $*" >> ~/.logs/work.log.backup ;
+    elif [ $1 == "skip" ]
+    then
+        echo "$TS: $*" >> ~/.logs/work.log ;
+        echo "$TS: $*" >> ~/.logs/work.log.backup ;
     elif [ $# -eq 1 ]
     then
         if [ $1 == "show" ]
