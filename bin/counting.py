@@ -47,14 +47,15 @@ print("Filename: {}".format(filename))
 data_lines = []
 file_lines = []
 
+last_line = None
+
 
 def data_line(line):
+    global last_line
+    last_line = None
     print(line)
     data_lines.append(line)
     file_lines.append(line)
-
-
-last_line = None
 
 
 def file_line(line):
