@@ -54,9 +54,15 @@ def data_line(line):
     file_lines.append(line)
 
 
+last_line = None
+
+
 def file_line(line):
-    print(line)
-    file_lines.append(line)
+    global last_line
+    if not (line == "" and last_line == ""):
+        print(line)
+        file_lines.append(line)
+    last_line = line
 
 
 total = timedelta(0)
@@ -152,6 +158,7 @@ with open(filename, "r") as f:
 if week.total_seconds() > 0:
     week_done()
 
+file_line("")
 file_line("Total: " + str_from_delta(total))
 file_line("Overtime: " + str_from_delta(overtime))
 try:
