@@ -116,16 +116,16 @@ with open(filename, "r") as f:
         assert timestamp == str_from_time(str_to_time(timestamp))
 
         now = str_to_time(timestamp)
+
+        # Produce end of week summary if necessary:
+        new_index = days.index(day)
+        if week > timedelta(0) and (new_index < day_index or days_passed >= 5):
+            week_done()
+
         if command == "skip":
             skip_days.append(day)
             data_line(line)
         elif command == "start":
-            # Produce end of week summary if necessary:
-            new_index = days.index(day)
-            if week > timedelta(0) and (new_index < day_index
-                                        or days_passed >= 5):
-                week_done()
-
             if (day not in ["Sat", "Sun"] and day not in days_this_week
                     and 9 <= now.hour <= 18):
                 days_this_week.append(day)
