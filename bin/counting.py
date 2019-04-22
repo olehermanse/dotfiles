@@ -75,7 +75,11 @@ timestamp = None
 def week_done():
     global week
     global days_this_week
+    global skip_days
     global overtime
+    for d in skip_days:
+        if d in days_this_week:
+            days_this_week.remove(d)
     added_overtime = week - timedelta(hours=len(days_this_week) * 8)
     file_line("Week: {} ({} overtime)".format(
         str_from_delta(week), hours_from_delta(added_overtime)))
@@ -83,6 +87,7 @@ def week_done():
     overtime += added_overtime
     week = timedelta(0)
     days_this_week = []
+    skip_days = []
 
 
 with open(filename, "r") as f:
@@ -111,7 +116,9 @@ with open(filename, "r") as f:
         assert timestamp == str_from_time(str_to_time(timestamp))
 
         now = str_to_time(timestamp)
-        if command == "start":
+        if command == "skip":
+            skip_days.append(day)
+        elif command == "start":
             # Produce end of week summary if necessary:
             new_index = days.index(day)
             if week > timedelta(0) and (new_index < day_index
