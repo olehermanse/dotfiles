@@ -140,18 +140,16 @@ function git-delete {
     if [ $? != 0 ]; then
         echo "Important! Could not delete remote branch"
         echo "           It most likely doesn't exist"
-        echo "           To delete local branch use: 'git branch -d $1'"
-        return 1
     fi
+    git remote prune origin
     git branch -d $1
     if [ $? != 0 ]; then
-        echo "Important! Branch not fully merged"
-        echo "           It was most likely deleted remote but not locally"
-        echo "           You should 'git checkout $1' and 'git push'"
-        echo "           If you know what you're doing, you can use 'git-delete-force $1'"
+        echo "Important! Could not delete local branch"
         return 1
     fi
 }
+
+alias git-branch-delete="git-delete"
 
 function git-delete-force {
     if [ $# != 1 ]; then
@@ -161,6 +159,8 @@ function git-delete-force {
     git push origin --delete $1;
     git branch -D $1;
 }
+
+alias git-branch-delete-force="git-delete-force"
 
 function gc {
     if [ $# != 2 ]; then
