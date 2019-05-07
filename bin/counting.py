@@ -88,10 +88,16 @@ def week_done():
         if d in days_this_week:
             days_this_week.remove(d)
     added_overtime = week - timedelta(hours=len(days_this_week) * 8)
+    orig = hours_from_delta(overtime)
+    added = hours_from_delta(added_overtime)
+
     file_line("Week: {} ({} overtime)".format(
         str_from_delta(week), hours_from_delta(added_overtime)))
-    file_line("")
     overtime += added_overtime
+    updated = hours_from_delta(overtime)
+    file_line("Overtime: {} + {} = {}".format(orig, added, overtime))
+    file_line("")
+
     week = timedelta(0)
     days_this_week = []
     skip_days = []
