@@ -161,7 +161,7 @@ if week.total_seconds() > 0:
 
 file_line("")
 file_line("Total: " + str_from_delta(total))
-file_line("Overtime: " + str_from_delta(overtime))
+file_line("Overtime: " + hours_from_delta(overtime))
 try:
     with open(sys.argv[2], "w") as f:
         for line in file_lines:
