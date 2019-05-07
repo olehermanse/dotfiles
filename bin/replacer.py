@@ -1,5 +1,8 @@
 import sys
 
+# Find example:
+# find . -name '*.md' -exec python3 replacer.py '\n\n\n' '\n\n' '{}' \;
+
 if len(sys.argv) != 4:
     sys.exit("Usage: replacer.py 'from\n' 'to\n' '/path/to/file'")
 
