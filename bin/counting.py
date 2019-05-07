@@ -95,7 +95,7 @@ def week_done():
         str_from_delta(week), hours_from_delta(added_overtime)))
     overtime += added_overtime
     updated = hours_from_delta(overtime)
-    file_line("Overtime: {} + {} = {}".format(orig, added, overtime))
+    file_line("Overtime: {} + {} = {}".format(orig, added, updated))
     file_line("")
 
     week = timedelta(0)
