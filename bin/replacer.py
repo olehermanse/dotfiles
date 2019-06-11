@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 import sys
 
 # Find example:
 # find . -name '*.md' -exec python3 replacer.py '\n\n\n' '\n\n' '{}' \;
 
 if len(sys.argv) != 4:
-    sys.exit("Usage: replacer.py 'from\n' 'to\n' '/path/to/file'")
+    sys.exit(r"Usage: replacer.py 'from\n' 'to\n' '/path/to/file'")
 
 match_escaped = sys.argv[1]
 replacement_escaped = sys.argv[2]
