@@ -27,3 +27,9 @@ cd /northern.tech/cfengine/enterprise && cf-git-delete-merged
 cd /northern.tech/cfengine/nova && cf-git-delete-merged
 cd /northern.tech/cfengine/buildscripts && cf-git-delete-merged
 cd /northern.tech/cfengine/masterfiles && cf-git-delete-merged
+
+cd /northern.tech/cfengine/core && git remote prune origin
+cd /northern.tech/cfengine/enterprise && git remote prune origin
+cd /northern.tech/cfengine/nova && git remote prune origin
+cd /northern.tech/cfengine/buildscripts && git remote prune origin
+cd /northern.tech/cfengine/masterfiles && git remote prune origin
