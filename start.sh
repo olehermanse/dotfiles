@@ -13,6 +13,7 @@ popd  > /dev/null
 export DOTFILES_PATH
 
 export PATH=${PATH}:${DOTFILES_PATH}/bin
+export PATH=${PATH}:${HOME}/bin
 
 # GENERAL
 source ${DOTFILES_PATH}"/exports.sh"

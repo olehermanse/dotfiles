@@ -25,3 +25,5 @@ sed -i.bu "/.setup-bash/d" $HOME/.bash_profile && rm -f $HOME/.bashrc.bu
 if [ -d ~/.setup-bash ]; then
    rm -rf ~/.setup-bash
 fi
+
+mkdir -p ~/bin
