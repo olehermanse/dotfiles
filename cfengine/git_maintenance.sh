@@ -1,7 +1,7 @@
 set -e
 
 function cf-git-delete-merged () {
-    git branch --merged | egrep -v "(^\*|master|3.12.x|3.10.x|3.7.x)" | xargs git branch -d
+    git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
 }
 
 cd /northern.tech/cfengine/starter_pack
