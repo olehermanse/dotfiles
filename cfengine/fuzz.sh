@@ -47,3 +47,9 @@ cp /home/ubuntu/core/examples/mergedata.cf /home/ubuntu/afl_inputs/
 # Commands for fuzzing, cf-promises is safer (has less side effects):
 # afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -- /var/cfengine/bin/cf-promises @@
 # afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -- /var/cfengine/bin/cf-agent -K @@
+
+# Parallell fuzzing, open in different tabs (tmux):
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -M fuzzer01 -- /var/cfengine/bin/cf-promises @@
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -S fuzzer02 -- /var/cfengine/bin/cf-promises @@
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -S fuzzer03 -- /var/cfengine/bin/cf-promises @@
+# afl-fuzz -i /home/ubuntu/afl_inputs/ -o /home/ubuntu/afl_outputs/ -S fuzzer04 -- /var/cfengine/bin/cf-promises @@
