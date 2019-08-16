@@ -7,7 +7,7 @@ set -e
 
 cd /home/ubuntu/
 
-git clone https://github.com/cfengine/core.git
+git clone --recursive https://github.com/cfengine/core.git
 
 cd core
 ./autogen.sh --enable-debug

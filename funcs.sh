@@ -167,5 +167,5 @@ function gc {
         echo "Specify user / org and repo"
         return 1
     fi
-    git clone git@github.com:$1/$2.git
+    git clone --recursive git@github.com:$1/$2.git
 }

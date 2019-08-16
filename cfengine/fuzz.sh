@@ -20,7 +20,7 @@ apt-get install -y bison
 cd /home/ubuntu/
 
 git clone https://github.com/mirrorer/afl.git
-git clone https://github.com/cfengine/core.git
+git clone --recursive https://github.com/cfengine/core.git
 
 cd afl
 make -j16
