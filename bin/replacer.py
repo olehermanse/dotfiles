@@ -11,8 +11,8 @@ match_escaped = sys.argv[1]
 replacement_escaped = sys.argv[2]
 file = sys.argv[3]
 
-match = match_escaped.replace(r"\n", "\n")
-replacement = replacement_escaped.replace(r"\n", "\n")
+match = match_escaped.replace(r"\n", "\n").replace(r"\t", "\t")
+replacement = replacement_escaped.replace(r"\n", "\n").replace(r"\t", "\t")
 
 with open(file, "r") as f:
     content = f.read()
