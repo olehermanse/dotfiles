@@ -21,8 +21,8 @@ def write_random_file(size, path):
 
 
 def random_filename():
-    return ''.join(
-        random.choices(string.ascii_uppercase + string.digits, k=32))
+    return ''.join(random.choices(string.ascii_uppercase + string.digits,
+                                  k=32))
 
 
 def random_file_path(directory):
