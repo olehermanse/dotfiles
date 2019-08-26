@@ -49,7 +49,7 @@ echo '{
 "input": "./afl_inputs",
 "output": "./afl_outputs",
 "target": "/var/cfengine/bin/cf-promises",
-"cmdline": "@@"
+"cmdline": "--log-level CRITICAL -c @@"
 }
 ' > afl.conf
 
