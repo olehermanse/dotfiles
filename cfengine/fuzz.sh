@@ -72,3 +72,10 @@ cp /home/ubuntu/core/examples/mergedata.cf /home/ubuntu/afl_inputs/
 
 # Parallell fuzzing, using afl-multicore (afl-utils):
 # afl-multicore -c afl.conf start 8
+
+# Collect crashes from multiple fuzzers:
+# afl-collect -r afl_outputs/ ./collection -- /var/cfengine/bin/cf-promises --log-level CRITICAL -c @@
+
+# Minimize corpus (remove "duplicates", reduce sizes of inputs)
+# WARNING: VERY TIME CONSUMING
+# afl-minimize -c new_corpus --cmin --cmin-mem-limit=500 --tmin --tmin-mem-limit=500 -j 8 ./afl_outputs/ -- /var/cfengine/bin/cf-promises --log-level CRITICAL -c @@
