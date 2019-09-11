@@ -7,6 +7,7 @@ alias test-bootstrap=${DOTFILES_PATH}'/cfengine/bootstrap.sh'
 alias test-cfnet=${DOTFILES_PATH}'/cfengine/cfnet.sh'
 
 alias ci-core="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --warnings"
+alias ci-core-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --warnings"
 alias ci-oss="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --warnings"
 alias ci-ent="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --warnings"
 alias ci-nova="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --nova --warnings"
