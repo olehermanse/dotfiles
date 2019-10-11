@@ -28,6 +28,13 @@ cd /northern.tech/cfengine/nova && cf-git-delete-merged
 cd /northern.tech/cfengine/buildscripts && cf-git-delete-merged
 cd /northern.tech/cfengine/masterfiles && cf-git-delete-merged
 
+cd /northern.tech/cfengine/core/libntech && git checkout master
+cd /northern.tech/cfengine/core/libntech && git fetch --all
+cd /northern.tech/cfengine/core/libntech && git rebase upstream/master
+cd /northern.tech/cfengine/core/libntech && cf-git-delete-merged
+cd /northern.tech/cfengine/core/libntech && git remote prune origin
+cd /northern.tech/cfengine/core/libntech && git remote prune upstream
+
 cd /northern.tech/cfengine/core && git remote prune origin
 cd /northern.tech/cfengine/enterprise && git remote prune origin
 cd /northern.tech/cfengine/nova && git remote prune origin
