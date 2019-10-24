@@ -10,8 +10,13 @@ alias ci-core="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py 
 alias ci-core-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --warnings"
 alias ci-oss="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --warnings"
 alias ci-ent="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --warnings"
+alias ci-ent-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --masterfiles --ent --warnings"
+alias ci-only-ent="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --ent --warnings"
+alias ci-only-ent-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --ent --warnings"
 alias ci-nova="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --nova --warnings"
 alias ci-nova-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --masterfiles --ent --nova --warnings"
+alias ci-only-nova="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --nova --warnings"
+alias ci-only-nova-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --nova --warnings"
 
 # Git:
 alias cf-git-delete-merged='git branch --merged | egrep -v "(^\*|master|3.12.x|3.10.x|3.7.x)$" | xargs git branch -d'
