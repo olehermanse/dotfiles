@@ -140,7 +140,7 @@ with open(filename, "r") as f:
             data_line(line)
         elif command == "start":
             if (day not in ["Sat", "Sun"] and day not in days_this_week
-                    and 6 <= now.hour <= 16):
+                    and 6 <= now.hour <= 18):
                 days_this_week.append(day)
 
             # Add start line to data:
@@ -150,7 +150,7 @@ with open(filename, "r") as f:
             day_index = new_index
 
             if (day not in ["Sat", "Sun"] and day not in days_this_week
-                    and 6 <= now.hour <= 16):
+                    and 6 <= now.hour <= 18):
                 days_this_week.append(day)
             then = str_to_time(data_lines[-1].split()[1][:-1])
             delta = now - then
