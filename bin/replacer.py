@@ -58,7 +58,11 @@ def main(argv):
         if verbose: print(f"Opening '{file}'")
         modified = False
         with open(file, "r") as f:
-            content = f.read()
+            try:
+                content = f.read()
+            except UnicodeDecodeError:
+                print(f"Invalid unicode in: {file}")
+                sys.exit(1)
             while find in content:
                 print(f"{change} in '{file}'")
                 content = content.replace(find, replace)

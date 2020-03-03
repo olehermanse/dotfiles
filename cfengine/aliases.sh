@@ -18,6 +18,9 @@ alias ci-nova-build="cd /northern.tech/cfengine/starter_pack && python3 cf-build
 alias ci-only-nova="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --nova --warnings"
 alias ci-only-nova-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --nova --warnings"
 
+alias ci-oss-install="cd /home/vagrant/cfe/core && make install && cd ../masterfiles && make install"
+alias ci-nova-install="cd /home/vagrant/cfe/core && make install && cd ../masterfiles && make install && cd ../enterprise && make install && cd ../nova && make install"
+
 # Git:
 alias cf-git-delete-merged='git branch --merged | egrep -v "(^\*|master|3.12.x|3.10.x|3.7.x)$" | xargs git branch -d'
 alias cf-git-maintenance='bash ~/.dotfiles_olehermanse/cfengine/git_maintenance.sh'
