@@ -21,7 +21,11 @@ source ${DOTFILES_PATH}"/aliases.sh"
 source ${DOTFILES_PATH}"/funcs.sh"
 source ${DOTFILES_PATH}"/vars.sh"
 source ${DOTFILES_PATH}"/cfengine/start.sh"
-source $HOME/.cargo/env
+
+if [ -f "$HOME/.cargo/env" ];
+then
+    source $HOME/.cargo/env
+fi
 
 # Platform dependent:
 if [[ "$OSTYPE" == "linux-gnu" ]]; then      # LINUX
