@@ -5,14 +5,6 @@ function cf-git-delete-merged () {
 }
 
 cd /northern.tech/cfengine/starter_pack
-python3 cf-builder.py --core --ent --nova --buildscr --masterfiles --checkout 3.10.x --fetch --rebase upstream/3.10.x --clean --push
-cd /northern.tech/cfengine/core && cf-git-delete-merged
-cd /northern.tech/cfengine/enterprise && cf-git-delete-merged
-cd /northern.tech/cfengine/nova && cf-git-delete-merged
-cd /northern.tech/cfengine/buildscripts && cf-git-delete-merged
-cd /northern.tech/cfengine/masterfiles && cf-git-delete-merged
-
-cd /northern.tech/cfengine/starter_pack
 python3 cf-builder.py --core --ent --nova --buildscr --masterfiles --checkout 3.12.x --rebase upstream/3.12.x --clean --push
 cd /northern.tech/cfengine/core && cf-git-delete-merged
 cd /northern.tech/cfengine/enterprise && cf-git-delete-merged
