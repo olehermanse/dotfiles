@@ -2,7 +2,7 @@ set -e
 
 function cf-git-delete-merged () {
     XARGS="xargs"
-    if xargs --help &| grep -F -e "--no-run-if-empty" > /dev/null 2>&1 ; then
+    if xargs --help 2>&1 | grep -F -e "--no-run-if-empty" > /dev/null 2>&1 ; then
         XARGS="xargs --no-run-if-empty"
     fi
     git branch --merged | egrep -v "(^\*|master|3.15.x|3.12.x|3.10.x|3.7.x)$" | $XARGS git branch -d
