@@ -15,6 +15,7 @@ if [[ $- = *i* ]] ; then
     [[ -d ~/.logs ]] || mkdir ~/.logs
     [[ -d ~/.logs/bash ]] || mkdir ~/.logs/bash
     [[ -d ~/.logs/git ]] || mkdir ~/.logs/git
+    [[ -d ~/.logs/sudo ]] || mkdir ~/.logs/sudo
     export PROMPT_COMMAND='
         HIST_1=$(history 1) ;
         DATE=$(date "+%Y-%m-%d") ;
@@ -22,6 +23,9 @@ if [[ $- = *i* ]] ; then
         echo "$TIME $(pwd) $HIST_1" >> ~/.logs/bash/$DATE.log ;
         if [[ $HIST_1 =~ "git" ]] ; then
             echo "$TIME $(pwd) $HIST_1" >> ~/.logs/git/$DATE.log ;
+        fi
+        if [[ $HIST_1 =~ "sudo" ]] ; then
+            echo "$TIME $(pwd) $HIST_1" >> ~/.logs/sudo/$DATE.log ;
         fi
     '
 fi
