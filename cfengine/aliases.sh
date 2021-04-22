@@ -24,3 +24,13 @@ alias ci-nova-install="cd /home/vagrant/cfe/core && make install && cd ../master
 # Git:
 alias cf-git-delete-merged='git branch --merged | egrep -v "(^\*|master|3.12.x|3.10.x|3.7.x)$" | xargs git branch -d'
 alias cf-git-maintenance='bash ~/.dotfiles_olehermanse/cfengine/git_maintenance.sh'
+
+function cfbs-all {
+    set -x
+    (cd /northern.tech/cfengine/cfbs         && bash -c "$1")
+    (cd /northern.tech/cfengine/cfbs-index   && bash -c "$1")
+    (cd /northern.tech/cfengine/cfbs-web     && bash -c "$1")
+    (cd /northern.tech/cfengine/cfbs-modules && bash -c "$1")
+    (cd /northern.tech/cfengine/cfbs-example && bash -c "$1")
+    set +x
+}
