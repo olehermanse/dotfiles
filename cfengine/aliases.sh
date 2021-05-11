@@ -34,3 +34,13 @@ function cfbs-all {
     (cd /northern.tech/cfengine/cfbs-example && bash -c "$1")
     set +x
 }
+
+function cf-all {
+    set -x
+    (cd /northern.tech/cfengine/core           && bash -c "$1")
+    (cd /northern.tech/cfengine/enterprise     && bash -c "$1")
+    (cd /northern.tech/cfengine/nova           && bash -c "$1")
+    (cd /northern.tech/cfengine/masterfiles    && bash -c "$1")
+    (cd /northern.tech/cfengine/mission-portal && bash -c "$1")
+    set +x
+}
