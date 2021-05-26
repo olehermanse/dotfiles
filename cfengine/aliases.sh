@@ -13,8 +13,8 @@ alias ci-ent="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py -
 alias ci-ent-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --masterfiles --ent --warnings --asan"
 alias ci-only-ent="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --ent --warnings --asan"
 alias ci-only-ent-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --ent --warnings --asan"
-alias ci-nova="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --nova --warnings --asan"
-alias ci-nova-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --masterfiles --ent --nova --warnings --asan"
+alias ci-nova="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --masterfiles --ent --mission-portal --nova --warnings --asan"
+alias ci-nova-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --masterfiles --ent --mission-portal --nova --warnings --asan"
 alias ci-only-nova="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --nova --warnings --asan"
 alias ci-only-nova-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --nova --warnings --asan"
 
