@@ -17,6 +17,7 @@ apt-get install -y libpam0g-dev
 apt-get install -y make
 apt-get install -y flex
 apt-get install -y bison
+apt-get install -y gdb
 
 cd /home/ubuntu/
 
