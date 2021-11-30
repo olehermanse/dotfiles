@@ -5,11 +5,11 @@ function cf-git-delete-merged () {
     if xargs --help 2>&1 | grep -F -e "--no-run-if-empty" > /dev/null 2>&1 ; then
         XARGS="xargs --no-run-if-empty"
     fi
-    git branch --merged | egrep -v "(^\*|master|3.15.x|3.12.x|3.10.x|3.7.x)$" | $XARGS git branch -d
+    git branch --merged | egrep -v "(^\*|master|3.18.x|3.15.x|3.12.x|3.10.x|3.7.x)$" | $XARGS git branch -d
 }
 
 cd /northern.tech/cfengine/starter_pack
-python3 cf-builder.py --core --ent --nova --buildscr --masterfiles --checkout 3.12.x --fetch --rebase upstream/3.12.x --clean --push
+python3 cf-builder.py --core --ent --nova --buildscr --masterfiles --checkout 3.15.x --rebase upstream/3.15.x --clean --push
 cd /northern.tech/cfengine/core && cf-git-delete-merged
 cd /northern.tech/cfengine/enterprise && cf-git-delete-merged
 cd /northern.tech/cfengine/nova && cf-git-delete-merged
@@ -17,7 +17,7 @@ cd /northern.tech/cfengine/buildscripts && cf-git-delete-merged
 cd /northern.tech/cfengine/masterfiles && cf-git-delete-merged
 
 cd /northern.tech/cfengine/starter_pack
-python3 cf-builder.py --core --ent --nova --buildscr --masterfiles --checkout 3.15.x --rebase upstream/3.15.x --clean --push
+python3 cf-builder.py --core --ent --nova --buildscr --masterfiles --checkout 3.18.x --rebase upstream/3.18.x --clean --push
 cd /northern.tech/cfengine/core && cf-git-delete-merged
 cd /northern.tech/cfengine/enterprise && cf-git-delete-merged
 cd /northern.tech/cfengine/nova && cf-git-delete-merged
