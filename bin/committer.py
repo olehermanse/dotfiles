@@ -21,7 +21,9 @@ output = open("output.txt", "r").read()
 os.system(f"rm output.txt")
 
 os.system("git add -A")
-message = f"""{output.split("\n")[0]}
+
+title = output.split("\n")[0]
+message = f"""{title}
 
 Ran command:
 
