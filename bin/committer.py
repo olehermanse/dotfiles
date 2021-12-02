@@ -15,7 +15,7 @@ script = command.split(" ")[0]
 
 assert url.endswith(script)
 
-print("Running command: {}".format(command)
+print(f"Running command: {command}")
 os.system(f"{command} > output.txt")
 output = open("output.txt", "r").read()
 os.system(f"rm output.txt")
