@@ -21,6 +21,7 @@ if [[ $- = *i* ]] ; then
         DATE=$(date "+%Y-%m-%d") ;
         TIME=$(date "+%Y-%m-%d.%H:%M:%S") ;
         echo "$TIME $(pwd) $HIST_1" >> ~/.logs/bash/$DATE.log ;
+        echo "$HIST_1" > ~/.logs/history_1.log ;
         if [[ $HIST_1 =~ "git" ]] ; then
             echo "$TIME $(pwd) $HIST_1" >> ~/.logs/git/$DATE.log ;
         fi

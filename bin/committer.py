@@ -5,15 +5,27 @@ Script for running a command and committing the results
 
 import os
 import sys
-
+import subprocess
 
 url = os.getenv("URL")
 
-command = sys.argv[1]
+assert url
+
+history_1 = os.path.expanduser("~/.logs/history_1.log")
+
+command = open(history_1, "r").read()[7:]
 
 script = command.split(" ")[0]
 
+print(command)
+print(script)
+print(url)
+
 assert url.endswith(script)
+
+os.system("git reset --hard HEAD")
+os.system("git clean -fxd")
+os.system("git clean -fXd")
 
 print(f"Running command: {command}")
 os.system(f"{command} > output.txt")
@@ -38,7 +50,7 @@ With script from:
 Output:
 
 ```
-{output}
+{output.strip()}
 ```
 """
 
