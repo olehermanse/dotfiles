@@ -34,7 +34,12 @@ def find(name, recursive=True, directories=False, files=True, extension=None, hi
 
 root, x, y = sys.argv[1], sys.argv[2], sys.argv[3]
 
-for path in find(root, directories=True, files=True):
+for path in find(root, directories=True, files=False):
+    if x in path:
+        os.system(f"mv '{path}' '{path.replace(x, y)}'")
+        print(f"Renamed '{path}' to '{path.replace(x, y)}'")
+
+for path in find(root, directories=False, files=True):
     if x in path:
         os.system(f"mv '{path}' '{path.replace(x, y)}'")
         print(f"Renamed '{path}' to '{path.replace(x, y)}'")
