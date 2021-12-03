@@ -7,30 +7,32 @@ import os
 import sys
 import subprocess
 
-url = os.getenv("URL")
+def prompt(message):
+    if not input(f"{message} ? y/n: ").lower().startswith("y"):
+        sys.exit(1)
 
-assert url
+def prompt_command(command):
+    prompt(f"{command} ? y/n: ")
+    return subprocess.run(["bash", "-c", command], stdout=subprocess.PIPE).stdout.decode('utf-8')
 
 history_1 = os.path.expanduser("~/.logs/history_1.log")
 
-command = open(history_1, "r").read()[7:]
+command = open(history_1, "r").read()[7:].strip()
 
 script = command.split(" ")[0]
 
-print(command)
-print(script)
-print(url)
+prompt_command("git reset --hard HEAD && git clean -fxd")
 
-assert url.endswith(script)
+output = prompt_command(command)
 
-os.system("git reset --hard HEAD")
-os.system("git clean -fxd")
-os.system("git clean -fXd")
+url = os.getenv("URL")
 
-print(f"Running command: {command}")
-os.system(f"{command} > output.txt")
-output = open("output.txt", "r").read()
-os.system(f"rm output.txt")
+if not url:
+    url = input(f"Please enter permalink URL for {script}: ")
+
+if not url.endswith(script):
+    print("URL does not match script")
+    sys.exit(1)
 
 os.system("git add -A")
 
@@ -54,5 +56,7 @@ Output:
 ```
 """
 
-os.system(f"git commit -S -s -m '{message}'")
-os.system(f"git commit -S -s --amend")
+print(message)
+
+#os.system(f"git commit -S -s -m '{message}'")
+#os.system(f"git commit -S -s --amend")
