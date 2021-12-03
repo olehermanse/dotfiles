@@ -56,7 +56,5 @@ Output:
 ```
 """
 
-print(message)
-
-#os.system(f"git commit -S -s -m '{message}'")
-#os.system(f"git commit -S -s --amend")
+os.system(f"git commit -S -s -m '{message}'")
+os.system(f"git commit -S -s --amend")
