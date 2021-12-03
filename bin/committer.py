@@ -36,7 +36,7 @@ if not url.endswith(script):
 
 os.system("git add -A")
 
-title = output.split("\n")[0]
+title = "Changed by script: " + command
 message = f"""{title}
 
 Ran command:
