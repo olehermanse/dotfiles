@@ -1,4 +1,5 @@
 set -e
+set -x
 
 function cf-git-delete-merged () {
     XARGS="xargs"
