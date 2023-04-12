@@ -5,7 +5,7 @@ function cf-git-delete-merged () {
     if xargs --help 2>&1 | grep -F -e "--no-run-if-empty" > /dev/null 2>&1 ; then
         XARGS="xargs --no-run-if-empty"
     fi
-    git branch --merged | egrep -v "(^\*|master|3.18.x|3.15.x|3.12.x|3.10.x|3.7.x)$" | $XARGS git branch -d
+    git branch --merged | egrep -v "(^\*|master|3.21.x|3.18.x|3.15.x|3.12.x|3.10.x|3.7.x)$" | $XARGS git branch -d
 }
 
 cd /northern.tech/cfengine/starter_pack
