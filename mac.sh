@@ -8,7 +8,6 @@ export ANT_ROOT=/usr/local/Cellar/ant
 export NEW_PROJECTS_DIR=~/code/
 
 alias logisim='open /Applications/Logisim.app'
-alias clearhistory='rm -fv ~/.bash_history && touch ~/.bash_history && unset HISTFILE'
 
 function tex {
     pdflatex --shell-escape $1 && pdflatex --shell-escape $1 && rm -f *.log *.out *.aux
