@@ -31,7 +31,7 @@ if [[ $- = *i* ]] ; then
     '
 fi
 
-bind "set completion-ignore-case on"
+bind "set completion-ignore-case off"
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
 bind "set mark-symlinked-directories on"
