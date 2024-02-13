@@ -12,6 +12,11 @@ if [ -d "/root/.deno" ]; then
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
+if [ -d "~/.deno" ]; then
+  export DENO_INSTALL="~/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
 LS_COLORS="$LS_COLORS:di=00;33"
 
 
