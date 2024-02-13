@@ -7,6 +7,11 @@ if [ -d "/snacks/bin" ]; then
     export PATH="$PATH:/snacks/bin/"
 fi
 
+if [ -d "/root/.deno" ]; then
+  export DENO_INSTALL="/root/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
 LS_COLORS="$LS_COLORS:di=00;33"
 
 
