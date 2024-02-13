@@ -12,8 +12,8 @@ if [ -d "/root/.deno" ]; then
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
-if [ -d "~/.deno" ]; then
-  export DENO_INSTALL="~/.deno"
+if [ -d "$HOME/.deno" ]; then
+  export DENO_INSTALL="$HOME/.deno"
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
