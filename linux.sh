@@ -2,7 +2,9 @@
 if [ -f "/local/lib/setupfiles/bashrc" ]; then
     source /local/lib/setupfiles/bashrc
 fi
-
+if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 if [ -d "/snacks/bin" ]; then
     export PATH="$PATH:/snacks/bin/"
 fi
