@@ -7,6 +7,10 @@ export NDK_ROOT=~/code/NDK
 export ANT_ROOT=/usr/local/Cellar/ant
 export NEW_PROJECTS_DIR=~/code/
 
+if test -f "/Users/olehermanse/Library/Python/3.12/bin/"; then
+    export PATH="/Users/olehermanse/Library/Python/3.12/bin/:$PATH"
+fi
+
 alias logisim='open /Applications/Logisim.app'
 
 function tex {
