@@ -16,6 +16,8 @@ alias ls='ls'
 
 # Git:
 alias fire='X="emergency_branch_fire_`whoami`_`date +%s`" ; git checkout -b $X ; git add -A ; git commit -m "FIRE! FIRE! Looking forward to hearing from you." ; git push'
+alias gcx='git cherry-pick -x'
+alias gca='git cherry-pick --abort'
 
 # Files:
 alias emacs='emacs -nw -q'
