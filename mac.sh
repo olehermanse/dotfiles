@@ -33,6 +33,14 @@ function atom-gpu {
     atom $1 --enable-gpu-rasterization ;
 }
 
+function notes {
+    mkdir -p "$HOME/notes/%Y/"
+    mkdir -p $(date "+$HOME/notes/%Y/")
+    mkdir -p $(date "+$HOME/notes/%Y/%m/")
+    touch $(date "+$HOME/notes/%Y/%m/%Y-%m-%d.md")
+    code $HOME/notes $(date "+$HOME/notes/%Y/%m/%Y-%m-%d.md")
+}
+
 function work {
     TIME="$(date "+%Y-%m-%d.%H:%M:%S")"
     TS="`date +"%a"` $TIME"
