@@ -24,7 +24,12 @@ function cleaner {
 alias clean="cleaner | wc -l"
 
 function cd {
-    command cd "$(realpath "$1")" || return
+    command cd $1 || return
+    if [ "$CWD" = "$(realpath .)" ]
+    then
+        return
+    fi
+    command cd "$(realpath .)" || return
 }
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
