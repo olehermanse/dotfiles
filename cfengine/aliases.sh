@@ -1,10 +1,12 @@
-alias cf-reinstall=${DOTFILES_PATH}'/cfengine/reinstall.sh'
+#!/usr/bin/bash
+
+alias cf-reinstall="\$DOTFILES_PATH/cfengine/reinstall.sh"
 alias cf-aliases='echo "cf-aliases are active"'
 alias cf-kill='bash -c "killall cf-execd ; killall cf-serverd ; killall cf-hub ; killall cf-agent; killall cf-monitord"'
 alias cf-procs='ps aux | grep [c]f-'
 
-alias test-bootstrap=${DOTFILES_PATH}'/cfengine/bootstrap.sh'
-alias test-cfnet=${DOTFILES_PATH}'/cfengine/cfnet.sh'
+alias test-bootstrap="\$DOTFILES_PATH/cfengine/bootstrap.sh"
+alias test-cfnet="\$DOTFILES_PATH/cfengine/cfnet.sh"
 
 alias ci-core="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --test --core --warnings --asan"
 alias ci-core-build="cd /northern.tech/cfengine/starter_pack && python3 cf-builder.py --rsync ~/cfe --clean --build --core --warnings --asan"
