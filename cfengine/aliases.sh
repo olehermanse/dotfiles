@@ -24,7 +24,7 @@ alias ci-oss-install="cd /home/vagrant/cfe/core && make install && cd ../masterf
 alias ci-nova-install="cd /home/vagrant/cfe/core && make install && cd ../masterfiles && make install && cd ../enterprise && make install && cd ../nova && make install"
 
 # Git:
-alias cf-git-delete-merged='git branch --merged | egrep -v "(^\*|master|3.12.x|3.10.x|3.7.x)$" | xargs git branch -d'
+alias cf-git-delete-merged='git branch --merged | egrep -v "(^\*|master|3.24.x|3.21.x|3.18.x|3.15.x|3.12.x|3.10.x|3.7.x)$" | xargs git branch -d'
 alias cf-git-maintenance='bash ~/.dotfiles_olehermanse/cfengine/git_maintenance.sh'
 
 function cfbs-all {
