@@ -22,7 +22,10 @@ function cleaner {
     find -E . -type f -regex "\./(.*~|~.*|.*cdslck.*|.*CDS\.log|.*\.DS_Store|\._.+)" -exec rm -v {} +
 }
 alias clean="cleaner | wc -l"
-alias cd="cd -P"
+
+function cd {
+    command cd "$(realpath "$1")" || return
+}
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
