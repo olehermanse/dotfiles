@@ -27,10 +27,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-function atom-gpu {
-    atom $1 --enable-gpu-rasterization ;
-}
-
 function notes {
     mkdir -p "$HOME/notes/%Y/"
     mkdir -p $(date "+$HOME/notes/%Y/")
