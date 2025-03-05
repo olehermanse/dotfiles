@@ -27,9 +27,9 @@ alias pdf='open *.pdf'
 alias py='open *.py'
 alias bashreload='source $HOME"/.bash_profile"'
 alias bashdeps='bash $HOME"/.dotfiles_olehermanse/deps.sh"'
-alias bashrc='atom ~/.dotfiles_olehermanse'
+alias bashrc='code ~/.dotfiles_olehermanse'
 if [ -d $HOME"/code/dotfiles" ]; then
-    alias bashrc='atom '$HOME'/code/dotfiles'
+    alias bashrc='code '$HOME'/code/dotfiles'
 fi
 alias bashreinstall='curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/install.sh | bash'
 
