@@ -1,12 +1,12 @@
 #/usr/bin/env bash
 
-# Run this script as root on an AWS Ubuntu 18 VM, you can curl it from GitHub:
+# Run this script as root on an AWS Ubuntu 22 VM, you can curl it from GitHub:
 # sudo bash
 # apt update
 # apt upgrade
 # curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/cfengine/fuzz.sh | bash
 
-apt-get install -y python
+apt-get install -y python3
 apt-get install -y python3-pip
 apt-get install -y autoconf
 apt-get install -y libtool
@@ -35,10 +35,11 @@ export CC=afl-gcc
 echo core >/proc/sys/kernel/core_pattern
 
 cd afl-utils
+git checkout experimental
+# TODO: Switch to a more "stable" version when another one is released
+#       at the time of writing, v1.35a, is the latest and does not work.
 python3 setup.py install
 cd ..
-
-echo "source /usr/lib/python3.6/site-packages/exploitable-1.32_rcor-py3.6.egg/exploitable/exploitable.py" >> ~/.gdbinit
 
 cd core
 ./autogen.sh --enable-debug
