@@ -47,28 +47,31 @@ function notes {
 function work {
     TIME="$(date "+%Y-%m-%d.%H:%M:%S")"
     TS="`date +"%a"` $TIME"
-    if   [ $1 == "start" ]
+    if [ $1 == "show" ] && [ $# -eq 1 ]
     then
-        echo "$TS: $*" >> ~/.logs/work.log ;
-        echo "$TS: $*" >> ~/.logs/work.log.backup ;
-    elif [ $1 == "stop" ]
-    then
-        echo "$TS: $*" >> ~/.logs/work.log ;
-        echo "$TS: $*" >> ~/.logs/work.log.backup ;
-    elif [ $1 == "skip" ]
-    then
-        echo "$TS: $*" >> ~/.logs/work.log ;
-        echo "$TS: $*" >> ~/.logs/work.log.backup ;
-    elif [ $# -eq 1 ]
-    then
-        if [ $1 == "show" ]
-        then
-            counting.py ~/.logs/work.log > ~/.logs/work.log.tmp && cp ~/.logs/work.log.tmp ~/.logs/work.log ;
-            less ~/.logs/work.log ;
-        else
-            echo "Invalid command \'$1\'" && return 1
-        fi
-    else
-        echo "$TS: $*" >> ~/.logs/work.log
+        counting.py ~/.logs/work.log > ~/.logs/work.log.tmp && cp ~/.logs/work.log.tmp ~/.logs/work.log ;
+        less ~/.logs/work.log ;
+        diff -q ~/.logs/work.log ~/.logs/work.log.tmp && rm ~/.logs/work.log.tmp
+        return 0;
     fi
+    if [ ! $# -eq 0 ]
+    then
+        echo "Error: Missing work command" && return 1
+        return 0;
+    fi
+    if [ ! $# -eq 1 ]
+    then
+        # More than one word - arbitrary work logging / timetable:
+        echo "$TS: $*" >> ~/.logs/work.log
+        echo "$TS: $*" >> ~/.logs/work.log.backup ;
+        echo "$TS: $*" >> ~/.logs/timetable.log
+        return 0;
+    fi
+    if [ $1 == "start" ] || [ $1 == "stop" ] || [ $1 == "skip" ]
+    then
+        echo "$TS: $*" >> ~/.logs/work.log ;
+        echo "$TS: $*" >> ~/.logs/work.log.backup ;
+        return 0;
+    fi
+    printf "Error: Unrecognized command '%s'" "$1" && return 1
 }
