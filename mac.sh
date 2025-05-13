@@ -67,29 +67,29 @@ function work {
 
     if [ "$1" == "show" ] && [ $# -eq 1 ]
     then
-        counting.py ~/.logs/work.log > ~/.logs/work.log.tmp && cp ~/.logs/work.log.tmp ~/.logs/work.log ;
-        less ~/.logs/work.log ;
-        diff -q ~/.logs/work.log ~/.logs/work.log.tmp && rm ~/.logs/work.log.tmp
-        return 0;
+        counting.py "$HOME/.logs/$YEAR/work.log" > "$HOME/.logs/$YEAR/work.log.tmp" && cp "$HOME/.logs/$YEAR/work.log.tmp" "$HOME/.logs/$YEAR/work.log"
+        less "$HOME/.logs/$YEAR/work.log"
+        diff -q "$HOME/.logs/$YEAR/work.log" "$HOME/.logs/$YEAR/work.log.tmp" && rm "$HOME/.logs/$YEAR/work.log.tmp"
+        return 0
     fi
     if [ $# -eq 0 ]
     then
         echo "Error: Missing work command" && return 1
-        return 0;
+        return 0
     fi
     if [ ! $# -eq 1 ]
     then
         # More than one word - arbitrary work logging / timetable:
-        echo "$TS: $*" >> ~/.logs/work.log
-        echo "$TS: $*" >> ~/.logs/work.log.backup ;
-        echo "$TS: $*" >> ~/.logs/timetable.log
-        return 0;
+        echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log"
+        echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log.backup"
+        echo "$TS: $*" >> "$HOME/.logs/$YEAR/timetable.log"
+        return 0
     fi
     if [ "$1" == "start" ] || [ "$1" == "stop" ] || [ "$1" == "skip" ]
     then
-        echo "$TS: $*" >> ~/.logs/work.log ;
-        echo "$TS: $*" >> ~/.logs/work.log.backup ;
-        return 0;
+        echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log"
+        echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log.backup"
+        return 0
     fi
     printf "Error: Unrecognized command '%s'\n" "$1" && return 1
 }
