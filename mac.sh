@@ -75,5 +75,5 @@ function work {
         echo "$TS: $*" >> ~/.logs/work.log.backup ;
         return 0;
     fi
-    printf "Error: Unrecognized command '%s'" "$1" && return 1
+    printf "Error: Unrecognized command '%s'\n" "$1" && return 1
 }
