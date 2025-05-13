@@ -82,6 +82,7 @@ function work {
         # More than one word - arbitrary work logging / timetable:
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log"
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log.backup"
+        echo "$TS: $*" >> "$HOME/.logs/work.log.backup"
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/timetable.log"
         return 0
     fi
@@ -89,6 +90,8 @@ function work {
     then
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log"
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log.backup"
+        echo "$TS: $*" >> "$HOME/.logs/work.log.backup"
+        echo "$TS: $*" >> "$HOME/.logs/$YEAR/timetable.log"
         return 0
     fi
     printf "Error: Unrecognized command '%s'\n" "$1" && return 1
