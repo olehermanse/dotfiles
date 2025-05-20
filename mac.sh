@@ -80,10 +80,9 @@ function work {
     if [ ! $# -eq 1 ]
     then
         # More than one word - arbitrary work logging / timetable:
-        echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log"
-        echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log.backup"
-        echo "$TS: $*" >> "$HOME/.logs/work.log.backup"
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/timetable.log"
+        echo "$TS: $*" >> "$HOME/.logs/$YEAR/timetable.log.backup"
+        echo "$TS: $*" >> "$HOME/.logs/timetable.log.backup"
         return 0
     fi
     if [ "$1" == "start" ] || [ "$1" == "stop" ] || [ "$1" == "skip" ]
@@ -91,7 +90,6 @@ function work {
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log"
         echo "$TS: $*" >> "$HOME/.logs/$YEAR/work.log.backup"
         echo "$TS: $*" >> "$HOME/.logs/work.log.backup"
-        echo "$TS: $*" >> "$HOME/.logs/$YEAR/timetable.log"
         return 0
     fi
     printf "Error: Unrecognized command '%s'\n" "$1" && return 1
