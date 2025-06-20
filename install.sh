@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 mkdir -p ~/tmp
 rm -rf ~/tmp/dotfiles
 rm -rf ~/tmp/dotfiles-master
