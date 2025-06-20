@@ -6,10 +6,12 @@ rm -rf ~/.dotfiles_olehermanse-master
 cp -r ./ ~/.dotfiles_olehermanse
 chmod u+x ~/.dotfiles_olehermanse/bin/counting.py
 
-cp ~/.dotfiles_olehermanse/.tmux.conf ~/.tmux.conf
+cp ~/.dotfiles_olehermanse/config/tmux/.tmux.conf ~/.tmux.conf
+cp ~/.dofiles_olehermanse/config/zed/settings.json ~/.config/zed/settings.json
+
 # Platform dependent:
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    cat ~/.dotfiles_olehermanse/.tmux-osx.conf >> ~/.tmux.conf
+    cat ~/.dotfiles_olehermanse/config/tmux/.tmux-osx.conf >> ~/.tmux.conf
 fi
 
 touch ~/.bashrc

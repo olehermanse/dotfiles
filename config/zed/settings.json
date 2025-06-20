@@ -1,0 +1,66 @@
+{
+  "theme": "One Dark",
+  "base_keymap": "Atom",
+  "preferred_line_length": 80,
+  "format_on_save": "on",
+  "show_whitespaces": "boundary",
+  "soft_wrap": "editor_width",
+  "enable_language_server": true,
+  //"features": {
+  //  "edit_prediction_provider": "none",
+  //  "agent": false
+  //},
+  // "toolbar": {
+  //   "agent_review": false
+  // },
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    }
+  },
+  "agent": {
+    // "single_file_review": false,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
+    "enabled": true,
+    "button": true,
+    "version": "2"
+  },
+  // "allow_executable_downloads": false,
+  // "auto_install_extensions": {
+  //   "html": false
+  // },
+  "prettier": {
+    "allowed": false
+  },
+  "formatter": {
+    "external": {
+      "command": "prettier",
+      "arguments": ["--stdin-filepath", "{buffer_path}"]
+    }
+  },
+  "languages": {
+    "Python": {
+      "formatter": {
+        "external": {
+          "command": "black",
+          "arguments": ["-"]
+        }
+      }
+    },
+    "TypeScript": {
+      "formatter": {
+        "external": {
+          "command": "deno",
+          "arguments": ["fmt", "-"]
+        }
+      }
+    }
+  }
+}
