@@ -1,0 +1,33 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-j": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-j": "terminal_panel::ToggleFocus",
+      "ctrl-s": "workspace::Save",
+      "cmd-s": "workspace::Save"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-j": "pane::CloseActiveItem",
+      "ctrl-r": null,
+      "ctrl-x": null,
+      "ctrl-k": null,
+      "ctrl-s": null
+    }
+  }
+]
