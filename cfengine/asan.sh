@@ -1,7 +1,7 @@
 #/usr/bin/env bash
-# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/cfengine/asan.sh | bash
+# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/main/cfengine/asan.sh | bash
 
-curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/cfengine/ubuntu.sh | bash
+curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/main/cfengine/ubuntu.sh | bash
 
 set -e
 

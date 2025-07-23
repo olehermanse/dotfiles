@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 rm -rf ~/.dotfiles_olehermanse
+rm -rf ~/.dotfiles_olehermanse-main
 rm -rf ~/.dotfiles_olehermanse-master
 
 cp -r ./ ~/.dotfiles_olehermanse

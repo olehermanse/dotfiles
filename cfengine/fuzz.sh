@@ -4,7 +4,7 @@
 # sudo bash
 # apt update
 # apt upgrade
-# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/cfengine/fuzz.sh | bash
+# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/main/cfengine/fuzz.sh | bash
 
 apt-get install -y python3
 apt-get install -y python3-pip

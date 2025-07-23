@@ -1,5 +1,5 @@
 #/usr/bin/env bash
-# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/cfengine/ubuntu.sh | bash
+# curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/main/cfengine/ubuntu.sh | bash
 
 apt-get update -y
 DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade

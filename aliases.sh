@@ -31,7 +31,7 @@ alias bashrc='code ~/.dotfiles_olehermanse'
 if [ -d $HOME"/code/dotfiles" ]; then
     alias bashrc='code '$HOME'/code/dotfiles'
 fi
-alias bashreinstall='curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/install.sh | bash'
+alias bashreinstall='curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/main/install.sh | bash'
 
 alias vmshut="vboxmanage list runningvms | gsed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} acpipowerbutton"
 alias vms="vboxmanage list runningvms"
