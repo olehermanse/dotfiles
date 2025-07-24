@@ -48,7 +48,7 @@ function notes {
     mkdir -p "$HOME/.logs/notes/"
     mkdir -p "$HOME/.logs/notes/$YEAR/"
     touch "$HOME/.logs/notes/$YEAR/$MD_FILENAME"
-    code "$HOME/.logs/notes" "$HOME/.logs/notes/$YEAR/$YMD.md"
+    zed "$HOME/.logs/notes" "$HOME/.logs/notes/$YEAR/$YMD.md"
 }
 
 function work {
