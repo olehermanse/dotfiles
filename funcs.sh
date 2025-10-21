@@ -169,3 +169,11 @@ function gc {
     fi
     git clone --recursive git@github.com:$1/$2.git
 }
+
+function gai {
+    last_message=$(git log -1 --pretty=%B)
+    new_message="${last_message}
+    Co-authored-by: Claude <noreply@anthropic.com>"
+    git commit --amend -m "$new_message"
+    git log -n 1
+}
