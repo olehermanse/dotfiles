@@ -173,7 +173,7 @@ function gc {
 function gai {
     last_message=$(git log -1 --pretty=%B)
     new_message="${last_message}
-    Co-authored-by: Claude <noreply@anthropic.com>"
+Co-authored-by: Claude <noreply@anthropic.com>"
     git commit --amend -m "$new_message"
     git log -n 1
 }
