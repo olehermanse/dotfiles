@@ -1,4 +1,6 @@
 {
+  "redact_private_values": true,
+  "private_files": ["*secrets*.json"],
   "theme": "One Dark",
   "vim_mode": false,
   "preferred_line_length": 80,
