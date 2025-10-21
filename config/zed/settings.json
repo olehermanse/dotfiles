@@ -1,6 +1,6 @@
 {
   "theme": "One Dark",
-  "vim_mode": true,
+  "vim_mode": false,
   "preferred_line_length": 80,
   "format_on_save": "off",
   "show_whitespaces": "boundary",
