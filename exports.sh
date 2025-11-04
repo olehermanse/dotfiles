@@ -5,6 +5,8 @@ export PYTHONSTARTUP=~/edu/.pystartup
 export CLICOLOR=1
 export LSCOLORS=excxdxdxbxfxfxbhbhexex
 
+export GPG_TTY=$(tty)
+
 # export PS1="\\h:\\w $ "
 export PS1="\u@\h \W $ "
 # Log bash commands to ~/.logs/bash/ and ~/.logs/git/
