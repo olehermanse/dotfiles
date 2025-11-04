@@ -8,6 +8,8 @@ cp -r ./ ~/.dotfiles_olehermanse
 chmod u+x ~/.dotfiles_olehermanse/bin/counting.py
 
 cp ~/.dotfiles_olehermanse/config/tmux/.tmux.conf ~/.tmux.conf
+mkdir -p ~/.config/
+mkdir -p ~/.config/zed/
 cp ~/.dotfiles_olehermanse/config/zed/settings.json ~/.config/zed/settings.json
 cp ~/.dotfiles_olehermanse/config/zed/keymap.json ~/.config/zed/keymap.json
 
