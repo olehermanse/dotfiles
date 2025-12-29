@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import sys
 import getpass
@@ -39,6 +40,8 @@ def backup_maybe(source, name, destination, password):
 
     assert not os.path.exists(dst)
     assert os.path.isdir(src)
+
+    cleanup(src)
 
     # cmd = f"cd '{source}' && tar -cz --to-stdout '{name}' | gpg --no-random-seed-file --encrypt --recipient 1AFB7919E3969F50997E6F0318823502992A2BC4 > '{dst}'"
     cmd = f"cd '{source}' && tar -cz --to-stdout '{name}' | openssl enc -e -aes-256-cbc -pbkdf2 -pass 'pass:{password}' > '{dst}'"
@@ -91,7 +94,32 @@ def cleanup(directory):
     command(f"find '{directory}' -name 'node_modules' -type d -exec rm -rf {'{}'} +")
     command(f"find '{directory}' -name '*~' -type f -exec rm {'{}'} +")
 
+
+def bootstrap():
+    script_location = os.path.abspath(os.path.expanduser(sys.argv[0]))
+    target_location = os.path.abspath("./backup.py")
+    if script_location == target_location:
+        log("Note: Standalone mode - skipping installation")
+        return
+    if not os.path.exists(target_location):
+        log("Note: Fresh directory - running first time installation")
+        command(f"cp '{script_location}' '{target_location}'")
+        return
+    assert os.path.isfile(target_location)
+    running = None
+    target = None
+    with open(script_location, "r") as f:
+        running = f.read()
+    with open(target_location, "r") as f:
+        target = f.read()
+    if running == target:
+        return
+    log("Note: Updating backup.py to latest (running) version")
+    with open(target_location, "w") as f:
+        f.write(running)
+
 def main():
+    bootstrap()
     gpgdir = "./gpg/"
     backups = "./backups/"
     root = os.path.abspath(".") + "/"
@@ -129,8 +157,6 @@ def main():
     confirm = getpass.getpass()
     if confirm != password:
         sys.exit("Password doesn't match")
-
-    cleanup(homedir)
 
     ensure_dir(gpgdir)
     ensure_dir(backups)
