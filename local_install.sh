@@ -5,7 +5,7 @@ rm -rf ~/.dotfiles_olehermanse-main
 rm -rf ~/.dotfiles_olehermanse-master
 
 cp -r ./ ~/.dotfiles_olehermanse
-chmod u+x ~/.dotfiles_olehermanse/bin/counting.py
+chmod u+x ~/.dotfiles_olehermanse/bin/work.py
 
 cp ~/.dotfiles_olehermanse/config/tmux/.tmux.conf ~/.tmux.conf
 mkdir -p ~/.config/

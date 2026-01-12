@@ -67,7 +67,7 @@ function work {
 
     if [ "$1" == "show" ] && [ $# -eq 1 ]
     then
-        counting.py "$HOME/.logs/$YEAR/work.log" > "$HOME/.logs/$YEAR/work.log.tmp" && cp "$HOME/.logs/$YEAR/work.log.tmp" "$HOME/.logs/$YEAR/work.log"
+        work.py "$HOME/.logs/$YEAR/work.log" > "$HOME/.logs/$YEAR/work.log.tmp" && cp "$HOME/.logs/$YEAR/work.log.tmp" "$HOME/.logs/$YEAR/work.log"
         less "$HOME/.logs/$YEAR/work.log"
         diff -q "$HOME/.logs/$YEAR/work.log" "$HOME/.logs/$YEAR/work.log.tmp" && rm "$HOME/.logs/$YEAR/work.log.tmp"
         return 0
