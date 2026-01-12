@@ -4,6 +4,10 @@ from datetime import datetime, timedelta
 
 TF = "%Y-%m-%d.%H:%M:%S"
 
+# TODOs
+# - Add custom timedelta class
+# - Remove globals
+
 
 def str_to_time(string):
     return datetime.strptime(string, TF)
@@ -24,7 +28,7 @@ def str_from_delta(time):
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 8)
     days, hours, minutes, seconds = ints(days, hours, minutes, seconds)
-    return "{} work days, {} hours, {} minutes".format(days, hours, minutes)
+    return f"{days} work days, {hours:02d}:{minutes:02d} hours"
 
 
 def hours_from_delta(time):
@@ -37,11 +41,11 @@ def hours_from_delta(time):
         hours = hours * -1
     if minutes < 10:
         minutes = "0" + str(minutes)
-    return "{}:{} hours".format(hours, minutes)
+    return f"{hours:02d}:{minutes:02d} hours"
 
 
 filename = sys.argv[1]
-print("Filename: {}".format(filename))
+print(f"Filename: {filename}")
 data_lines = []
 file_lines = []
 
@@ -84,7 +88,7 @@ def min_to_str(minutes: int):
         minutes = -minutes
     hours = minutes // 60
     minutes = minutes % 60
-    result += "{:02d}:{:02d} hours".format(hours, minutes)
+    result += f"{hours:02d}:{minutes:02d} hours"
     return result
 
 def min_to_str_days(minutes: int):
@@ -96,7 +100,7 @@ def min_to_str_days(minutes: int):
     days = minutes // (8 * 60)
     hours = (minutes % (24 * 60)) // 60
     minutes = minutes % 60
-    result += "{:02d} days, {:02d}:{:02d} hours".format(days, hours, minutes)
+    result += f"{days} days, {hours:02d}:{minutes:02d} hours"
     return result
 
 def week_done():
@@ -115,11 +119,10 @@ def week_done():
     week_overtime = actual_minutes - target_minutes
     # print("Diff: {} - {} = {}".format(min_to_str(actual_minutes), min_to_str(target_minutes), min_to_str(week_overtime)))
 
-    file_line("Week: {} ({} overtime on {} days)".format(
-        min_to_str(week_work), min_to_str(week_overtime), len(days_this_week)))
+    file_line(f"Week: {min_to_str(week_work)} ({min_to_str(week_overtime)} overtime on {len(days_this_week)} days)")
     old_overtime = total_overtime
     new_overtime = total_overtime + week_overtime
-    file_line("Overtime: {} + {} = {}".format(min_to_str(old_overtime), min_to_str(week_overtime), min_to_str(new_overtime)))
+    file_line(f"Overtime: {min_to_str(old_overtime)} + {min_to_str(week_overtime)} = {min_to_str(new_overtime)}")
     file_line("")
 
     total_overtime += week_overtime
@@ -180,7 +183,7 @@ with open(filename, "r") as f:
             minutes = int(delta.total_seconds()) // 60
 
             line = " ".join(words[0:3])
-            line += " ({})".format(min_to_str(minutes))
+            line += f" ({min_to_str(minutes)})"
             total_work += minutes
             week_work += minutes
 
