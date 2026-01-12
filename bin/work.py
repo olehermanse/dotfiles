@@ -3,11 +3,26 @@ import sys
 from datetime import datetime, timedelta
 
 TF = "%Y-%m-%d.%H:%M:%S"
+week_work = 0
+week_overtime = 0
+total_work = 0
+total_overtime = 0
+days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+day_index = 0
+days_this_week = []
+skip_days = []
+last_line = None
+data_lines = []
+file_lines = []
+commands = ["start", "stop", "skip"]
+timestamp = None
 
 # TODOs
 # - Add custom timedelta class
 # - Remove globals
 
+
+# Pure functions:
 
 def str_to_time(string):
     return datetime.strptime(string, TF)
@@ -43,17 +58,36 @@ def hours_from_delta(time):
         minutes = "0" + str(minutes)
     return f"{hours:02d}:{minutes:02d} hours"
 
+def min_to_str(minutes: int):
+    assert type(minutes) == int
+    result = ""
+    if minutes < 0:
+        result += "-"
+        minutes = -minutes
+    hours = minutes // 60
+    minutes = minutes % 60
+    result += f"{hours:02d}:{minutes:02d} hours"
+    return result
 
-filename = sys.argv[1]
-print(f"Filename: {filename}")
-data_lines = []
-file_lines = []
 
-last_line = None
+def min_to_str_days(minutes: int):
+    assert type(minutes) == int
+    result = ""
+    if minutes < 0:
+        result += "-"
+        minutes = -minutes
+    days = minutes // (8 * 60)
+    hours = (minutes % (24 * 60)) // 60
+    minutes = minutes % 60
+    result += f"{days} days, {hours:02d}:{minutes:02d} hours"
+    return result
 
+# Functions whic use globals:
 
 def data_line(line):
     global last_line
+    global data_lines
+    global file_lines
     last_line = None
     print(line)
     data_lines.append(line)
@@ -67,41 +101,6 @@ def file_line(line):
         file_lines.append(line)
     last_line = line
 
-week_work = 0
-week_overtime = 0
-total_work = 0
-total_overtime = 0
-days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-day_index = 0
-days_this_week = []
-skip_days = []
-
-commands = ["start", "stop", "skip"]
-
-timestamp = None
-
-def min_to_str(minutes: int):
-    assert type(minutes) == int
-    result = ""
-    if minutes < 0:
-        result += "-"
-        minutes = -minutes
-    hours = minutes // 60
-    minutes = minutes % 60
-    result += f"{hours:02d}:{minutes:02d} hours"
-    return result
-
-def min_to_str_days(minutes: int):
-    assert type(minutes) == int
-    result = ""
-    if minutes < 0:
-        result += "-"
-        minutes = -minutes
-    days = minutes // (8 * 60)
-    hours = (minutes % (24 * 60)) // 60
-    minutes = minutes % 60
-    result += f"{days} days, {hours:02d}:{minutes:02d} hours"
-    return result
 
 def week_done():
     global week_work
@@ -119,10 +118,14 @@ def week_done():
     week_overtime = actual_minutes - target_minutes
     # print("Diff: {} - {} = {}".format(min_to_str(actual_minutes), min_to_str(target_minutes), min_to_str(week_overtime)))
 
-    file_line(f"Week: {min_to_str(week_work)} ({min_to_str(week_overtime)} overtime on {len(days_this_week)} days)")
+    file_line(
+        f"Week: {min_to_str(week_work)} ({min_to_str(week_overtime)} overtime on {len(days_this_week)} days)"
+    )
     old_overtime = total_overtime
     new_overtime = total_overtime + week_overtime
-    file_line(f"Overtime: {min_to_str(old_overtime)} + {min_to_str(week_overtime)} = {min_to_str(new_overtime)}")
+    file_line(
+        f"Overtime: {min_to_str(old_overtime)} + {min_to_str(week_overtime)} = {min_to_str(new_overtime)}"
+    )
     file_line("")
 
     total_overtime += week_overtime
@@ -133,71 +136,85 @@ def week_done():
     skip_days = []
 
 
-with open(filename, "r") as f:
-    for line in f:
-        line = line.strip()
-        if not line:
-            continue
-        if line.startswith("#"):
-            file_line(line)
-            continue
-        words = line.split()
-        if len(words) < 3 or words[2] not in commands:
-            continue
+def process_work(filename):
+    global timestamp
+    global week_work
+    global day_index
+    global total_work
+    print(f"Filename: {filename}")
 
-        day = words[0]
-        days_passed = 0
+    with open(filename, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith("#"):
+                file_line(line)
+                continue
+            words = line.split()
+            if len(words) < 3 or words[2] not in commands:
+                continue
 
-        new_timestamp = words[1][:-1]
+            day = words[0]
+            days_passed = 0
 
-        if timestamp:
-            days_passed = str_to_time(new_timestamp) - str_to_time(timestamp)
-            days_passed = days_passed.days
+            new_timestamp = words[1][:-1]
 
-        command = words[2]
-        timestamp = new_timestamp
-        assert timestamp == str_from_time(str_to_time(timestamp))
+            if timestamp:
+                days_passed = str_to_time(new_timestamp) - str_to_time(timestamp)
+                days_passed = days_passed.days
 
-        now = str_to_time(timestamp)
+            command = words[2]
+            timestamp = new_timestamp
+            assert timestamp == str_from_time(str_to_time(timestamp))
 
-        # Produce end of week summary if necessary:
-        new_index = days.index(day)
-        if week_work > 0 and (new_index < day_index or days_passed >= 5):
-            week_done()
+            now = str_to_time(timestamp)
 
-        if command == "skip":
-            skip_days.append(day)
-            data_line(line)
-        elif command == "start":
-            if (day not in ["Sat", "Sun"] and day not in days_this_week):
-                days_this_week.append(day)
+            # Produce end of week summary if necessary:
+            new_index = days.index(day)
+            if week_work > 0 and (new_index < day_index or days_passed >= 5):
+                week_done()
 
-            # Add start line to data:
-            data_line(line)
-        else:
-            assert command == "stop"
-            day_index = new_index
+            if command == "skip":
+                skip_days.append(day)
+                data_line(line)
+            elif command == "start":
+                if day not in ["Sat", "Sun"] and day not in days_this_week:
+                    days_this_week.append(day)
 
-            then = str_to_time(data_lines[-1].split()[1][:-1])
-            delta = now - then
-            minutes = int(delta.total_seconds()) // 60
+                # Add start line to data:
+                data_line(line)
+            else:
+                assert command == "stop"
+                day_index = new_index
 
-            line = " ".join(words[0:3])
-            line += f" ({min_to_str(minutes)})"
-            total_work += minutes
-            week_work += minutes
+                then = str_to_time(data_lines[-1].split()[1][:-1])
+                delta = now - then
+                minutes = int(delta.total_seconds()) // 60
 
-            data_line(line)
+                line = " ".join(words[0:3])
+                line += f" ({min_to_str(minutes)})"
+                total_work += minutes
+                week_work += minutes
 
-if week_work > 0:
-    week_done()
+                data_line(line)
+    if week_work > 0:
+        week_done()
 
-file_line("")
-file_line("Total: " + min_to_str_days(total_work))
-file_line("Overtime: " + min_to_str(total_overtime))
-try:
-    with open(sys.argv[2], "w") as f:
-        for line in file_lines:
-            f.write(line + "\n")
-except IndexError:
-    pass
+    file_line("")
+    file_line("Total: " + min_to_str_days(total_work))
+    file_line("Overtime: " + min_to_str(total_overtime))
+    try:
+        with open(sys.argv[2], "w") as f:
+            for line in file_lines:
+                f.write(line + "\n")
+    except IndexError:
+        pass
+
+
+def main():
+    process_work(sys.argv[1])
+
+
+if __name__ == "__main__":
+    main()
