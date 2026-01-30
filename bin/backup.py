@@ -169,7 +169,11 @@ def get_config(path: str):
         return json.loads(f.read())
 
 
-def get_profile(user, machine, config):
+def get_profile(user, machine, config, request=None):
+    if request:
+        if request not in config["profiles"]:
+            raise BackupUserError(f"Profile '{request}' does not exist")
+        return config["profiles"][request]
     key = user + "@" + machine
     if key in config["profiles"]:
         return config["profiles"][key]
@@ -224,8 +228,12 @@ def main():
     log(f"Backup root: {root}")
     log(f"Backup folder: {final}")
 
+    request = None
+    if len(sys.argv) > 1:
+        request = sys.argv[1]
+
     config = get_config(root)
-    profile = get_profile(user, machine, config)
+    profile = get_profile(user, machine, config, request)
 
     password = getpass.getpass()
     if not password or len(password) < 14:
@@ -260,6 +268,7 @@ def main():
         command(f"cp '{root}config.json' '{destination_meta}config_before.json'")
     dump_config(destination_meta, config)
     dump_config(root, config)
+    ensure_file(destination_meta, json.dumps(profile, indent=2) + "\n")
     command(f"mv '{destination}' '{final}'")
     log("")
 

@@ -38,13 +38,6 @@ function triplelatex {
 
 # Initialize git config:
 function initgit {
-    git config --global push.default current
-    git config --global alias.css "commit -S -s"
-    git config --global alias.cssan "commit -S -s --author 'Anonymous <>'"
-    echo "You should run these manually:"
-    echo "git config --global user.name  'Your Name'"
-    echo "git config --global user.email 'your@email'"
-    echo "git config --global user.signingkey yourkeyid"
 }
 
 # tar:

@@ -13,6 +13,9 @@ mkdir -p ~/.config/zed/
 cp ~/.dotfiles_olehermanse/config/zed/settings.json ~/.config/zed/settings.json
 cp ~/.dotfiles_olehermanse/config/zed/keymap.json ~/.config/zed/keymap.json
 
+git config --global push.default current
+git config --global alias.css "commit -S -s"
+
 # Platform dependent:
 if [[ "$OSTYPE" == "darwin"* ]]; then
     cat ~/.dotfiles_olehermanse/config/tmux/.tmux-osx.conf >> ~/.tmux.conf
