@@ -36,10 +36,6 @@ function triplelatex {
     mv _minted-$filename ./.latex
 }
 
-# Initialize git config:
-function initgit {
-}
-
 # tar:
 function entar {
     target=${1%/}
