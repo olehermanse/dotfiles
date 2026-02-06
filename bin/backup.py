@@ -112,14 +112,15 @@ def ensure_dir(path):
 
 
 def ensure_file(path, content=None):
-    if not os.path.exists(path):
-        command(f"touch '{path}'")
+    assert not path.endswith(("/", "/."))
+    assert not os.path.isdir(path)
     if content is None:
-        return
-    assert os.path.isfile(path)
-    in_file = None
-    with open(path, "r") as f:
-        in_file = f.read()
+        content = ""
+    try:
+        with open(path, "r") as f:
+            in_file = f.read()
+    except:
+        in_file = None
     if in_file == content:
         return
     with open(path, "w") as f:
@@ -260,15 +261,15 @@ def main():
 
     destination_meta = destination + "meta/"
     ensure_dir(destination_meta)
-    command(f"gpg -a --export > {destination_meta}/mypubkeys.asc")
-    command(f"gpg --export-ownertrust > {destination_meta}/otrust.txt")
+    command(f"gpg -a --export > {destination_meta}mypubkeys.asc")
+    command(f"gpg --export-ownertrust > {destination_meta}otrust.txt")
     command(f"cp '{root}backup.py' '{destination_meta}backup.py'")
     command(f"cp '{root}log.txt' '{destination_meta}log.txt'")
     if os.path.exists(root + "config.json"):
         command(f"cp '{root}config.json' '{destination_meta}config_before.json'")
     dump_config(destination_meta, config)
     dump_config(root, config)
-    ensure_file(destination_meta, json.dumps(profile, indent=2) + "\n")
+    ensure_file(destination_meta + "profile.json", json.dumps(profile, indent=2) + "\n")
     command(f"mv '{destination}' '{final}'")
     log("")
 
