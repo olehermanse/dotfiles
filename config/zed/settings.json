@@ -1,4 +1,10 @@
 {
+  "show_edit_predictions": false,
+  "terminal": {
+    "shell": {
+      "program": "bash"
+    }
+  },
   "redact_private_values": true,
   "private_files": ["*secrets*.json"],
   "theme": "One Dark",
