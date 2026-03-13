@@ -246,6 +246,17 @@ def decryption():
         if outfile.endswith(".tgz"):
             command(f'sh -c \'cd {target} && tar -xzf "{outfile}" && rm "{outfile}"\'')
 
+def cleanup_backup(destination):
+    assert os.path.isdir(destination)
+    meta = os.path.join(destination, "meta")
+    assert os.path.isdir(meta)
+    for entry in os.listdir(destination):
+        if entry.startswith("._"):
+            command(f"rm -rf '{os.path.join(destination, entry)}'")
+    for entry in os.listdir(meta):
+        if entry.startswith("._"):
+            command(f"rm -rf '{os.path.join(meta, entry)}'")
+
 def main():
     if not os.path.exists("./backups/") and any(find(".", extension=".enc")):
         try:
@@ -334,8 +345,14 @@ def main():
     dump_config(destination_meta, config)
     dump_config(root, config)
     ensure_file(destination_meta + "profile.json", json.dumps(profile, indent=2) + "\n")
+    cleanup_backup(destination)
     command(f"mv '{destination}' '{final}'")
     log("")
+    for entry in os.listdir("backups"):
+        if entry.startswith(("._", "tmp-")):
+            command(f"rm -rf 'backups/{entry}'")
+            continue
+        cleanup_backup(os.path.join("backups", entry))
 
 
 if __name__ == "__main__":
