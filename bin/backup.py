@@ -85,7 +85,8 @@ def backup_maybe(source, name, destination, password):
     assert "'" in cmd and '"' not in cmd
     cmd = f'bash -c "{cmd}"'
     assert "'" in cmd and '"' in cmd
-    command(cmd, censor=password)
+    r = command(cmd, censor=password)
+    assert r == 0
 
 
 def confirmation():
@@ -97,7 +98,7 @@ def confirmation():
 
 def command(cmd: str, censor=None) -> int:
     if censor and censor in cmd:
-        log(f"Running:\n    {cmd.replace(censor, "<omitted>")}")
+        log(f"Running:\n    {cmd.replace(censor, '<omitted>')}")
     else:
         log(f"Running:\n    {cmd}")
     # confirmation()
@@ -164,9 +165,10 @@ def bootstrap():
 
 
 def get_config(path: str):
-    if not os.path.exists(path + "config.json"):
+    json_path = os.path.join(path, "config.json")
+    if not os.path.exists(json_path):
         return DEFAULT_CONFIG
-    with open(path + "config.json", "r") as f:
+    with open(json_path, "r") as f:
         return json.loads(f.read())
 
 
@@ -190,7 +192,69 @@ def small_hash(string):
     return hashlib.sha256(string.encode("utf-8")).hexdigest()[0:4]
 
 
+def find(name, recursive=True, directories=False, files=True, extension=None):
+    assert files or directories
+    assert os.path.isdir(name)
+    for root, subdirs, subfiles in os.walk(name):
+        if directories:
+            for dir in subdirs:
+                if not extension or (extension and dir.endswith(extension)):
+                    yield os.path.join(root, dir) + "/"
+        if files:
+            for file in subfiles:
+                if not extension or (extension and file.endswith(extension)):
+                    yield os.path.join(root, file)
+        if not recursive:
+            return  # End iteration after looking through first (top) level
+
+
+def decryption():
+    print("Assuming you want to decrypt.")
+
+    config = get_config("./meta")
+    if "password_hashes" not in config:
+        raise BackupInternalError("Password hashes missing")
+    print("Enter decryption password: ")
+    password = getpass.getpass()
+    if not password or len(password) < 14:
+        raise BackupUserError("Password must be at least 14 characters")
+    pw_hash = small_hash(password)
+    print(pw_hash)
+    print(config)
+    if pw_hash not in config["password_hashes"]:
+        raise BackupUserError("Wrong password!")
+    print("Enter target directory for decrypted files (~/Desktop): ", end="")
+    target = input().strip()
+    if not target:
+        target = "~/Desktop"
+    target = os.path.expanduser(target)
+
+    if not os.path.exists(target):
+        raise BackupUserError(f"The target '{target}' does not exist.")
+    if not os.path.isdir(target):
+        raise BackupUserError(f"The target '{target}' is not a directory.")
+    name = os.path.basename(os.path.abspath("./"))
+    target = os.path.join(target, name)
+    ensure_dir(target)
+    print(f"Decrypting backup files into: {target}")
+    for file in find(".", extension=".enc"):
+        assert file.endswith(".enc")
+        assert file.startswith("./")
+        plaintext_name = file[2:-4]
+        outfile = os.path.join(target, plaintext_name)
+        command(f"openssl enc -d -aes-256-cbc -pbkdf2 -in {file} -out {outfile} -pass pass:{password}", censor=password)
+        if outfile.endswith(".tgz"):
+            command(f'sh -c \'cd {target} && tar -xzf "{outfile}" && rm "{outfile}"\'')
+
 def main():
+    if not os.path.exists("./backups/") and any(find(".", extension=".enc")):
+        try:
+            decryption()
+        except BackupUserError as e:
+            print(e)
+            sys.exit(1)
+        return
+
     bootstrap()
     backups = "./backups/"
     root = os.path.abspath(".") + "/"
