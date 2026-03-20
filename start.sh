@@ -15,6 +15,7 @@ export DOTFILES_PATH
 export PATH=${PATH}:${DOTFILES_PATH}/bin
 export PATH=${PATH}:${HOME}/bin
 export PATH=${PATH}:${HOME}/.local/bin
+export PATH=${PATH}:${HOME}/.cargo/bin
 
 # GENERAL
 source ${DOTFILES_PATH}"/exports.sh"
