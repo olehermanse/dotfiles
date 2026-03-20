@@ -20,6 +20,11 @@ function cleaner {
 alias clean="cleaner | wc -l"
 
 function cd {
+    if [ $# -eq 0 ]
+    then
+        command cd
+        return
+    fi
     command cd "$1" || return
     if [ "$CWD" = "$(realpath .)" ]
     then
