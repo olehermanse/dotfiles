@@ -2,7 +2,7 @@
   "show_edit_predictions": false,
   "terminal": {
     "shell": {
-      "program": "bash"
+      "program": "/opt/homebrew/opt/bash/bin/bash"
     }
   },
   "redact_private_values": true,
