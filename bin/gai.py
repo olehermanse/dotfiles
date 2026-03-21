@@ -58,7 +58,7 @@ def main():
 
         # Amend the commit with the new message
         subprocess.run(
-            ["git", "commit", "--amend", "-m", new_message],
+            ["git", "commit", "-S", "-s", "--amend", "-m", new_message],
             check=True,
             capture_output=True,
             text=True,

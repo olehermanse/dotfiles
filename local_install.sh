@@ -14,6 +14,7 @@ cp ~/.dotfiles_olehermanse/config/zed/settings.json ~/.config/zed/settings.json
 cp ~/.dotfiles_olehermanse/config/zed/keymap.json ~/.config/zed/keymap.json
 
 git config --global push.default current
+git config --global core.editor emacs
 git config --global alias.css "commit -S -s"
 
 # Platform dependent:
