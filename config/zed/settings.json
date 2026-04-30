@@ -1,4 +1,15 @@
 {
+  "cli_default_open_behavior": "new_window",
+  "remove_trailing_whitespace_on_save": false,
+  "use_auto_surround": false,
+  "use_autoclose": false,
+  "project_panel": {
+    "dock": "left"
+  },
+  "auto_indent_on_paste": false,
+  "auto_indent": "none",
+  "hide_mouse": "never",
+  "cursor_blink": false,
   "show_edit_predictions": false,
   "terminal": {
     "shell": {
@@ -24,12 +35,13 @@
     }
   },
   "agent": {
+    "dock": "left",
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
     },
     "enabled": true,
-    "button": true,
+    "button": true
   },
   "prettier": {
     "allowed": false
@@ -37,10 +49,7 @@
   "formatter": {
     "external": {
       "command": "prettier",
-      "arguments": [
-        "--stdin-filepath",
-        "{buffer_path}"
-      ]
+      "arguments": ["--stdin-filepath", "{buffer_path}"]
     }
   },
   "languages": {
@@ -49,9 +58,7 @@
       "formatter": {
         "external": {
           "command": "black",
-          "arguments": [
-            "-"
-          ]
+          "arguments": ["-"]
         }
       }
     },
@@ -59,10 +66,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -70,10 +74,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -81,10 +82,7 @@
       "formatter": {
         "external": {
           "command": "deno",
-          "arguments": [
-            "fmt",
-            "-"
-          ]
+          "arguments": ["fmt", "-"]
         }
       }
     },
@@ -92,10 +90,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -103,10 +98,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -114,10 +106,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -125,10 +114,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     }
