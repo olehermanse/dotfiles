@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-alias hw='echo "Hello World, olehermanse bashrc dotfiles are active. v2025-06-20"'
+alias hw='echo "Hello World, olehermanse bashrc dotfiles are active. v2026-04-30"'
 alias sudo='sudo '
 
 # Change dir shortcuts:
