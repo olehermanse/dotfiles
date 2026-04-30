@@ -43,7 +43,7 @@ def main():
             parts.append(body)
             parts.append("")
 
-        CO_AUTHOR_STRING = "Co-authored-by: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
+        CO_AUTHOR_STRING = "Co-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
         parts.append(CO_AUTHOR_STRING)
 
         footer = CO_AUTHOR_STRING + "\n" + footer
