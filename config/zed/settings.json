@@ -10,6 +10,9 @@
   "auto_indent": "none",
   "hide_mouse": "never",
   "cursor_blink": false,
+  "search": {
+    "case_sensitive": true
+  },
   "show_edit_predictions": false,
   "terminal": {
     "shell": {
