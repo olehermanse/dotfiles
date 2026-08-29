@@ -1,6 +1,5 @@
 Include /etc/ssh/sshd_config.d/*.conf
 
-PermitRootLogin prohibit-password
 UsePAM yes
 X11Forwarding yes
 PrintMotd no

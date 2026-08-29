@@ -1,3 +1,5 @@
+set -e
+set -x
 sudo useradd -m -d /home/olehermanse -s /bin/bash olehermanse
 sudo adduser olehermanse sudo
 mkdir -p /home/olehermanse/.ssh/
