@@ -6,7 +6,7 @@ PrintMotd no
 AcceptEnv LANG LC_* COLORTERM NO_COLOR
 Subsystem       sftp    /usr/lib/openssh/sftp-server
 
-# PermitRootLogin no
+PermitRootLogin no
 StrictModes yes
 MaxAuthTries 6
 MaxSessions 10
