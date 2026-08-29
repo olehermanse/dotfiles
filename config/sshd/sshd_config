@@ -1,0 +1,18 @@
+Include /etc/ssh/sshd_config.d/*.conf
+
+PermitRootLogin prohibit-password
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_* COLORTERM NO_COLOR
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+PermitRootLogin no
+StrictModes yes
+MaxAuthTries 6
+MaxSessions 10
+PubkeyAuthentication yes
+
+PasswordAuthentication no
+PermitEmptyPasswords no
+UsePAM yes
