@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -e
 set -x
 sudo useradd -m -d /home/olehermanse -s /bin/bash olehermanse
