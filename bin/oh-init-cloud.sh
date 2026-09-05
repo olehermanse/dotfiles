@@ -8,6 +8,8 @@ sudo adduser olehermanse sudo
 
 mkdir -p /home/olehermanse/.ssh/
 cp ~/.ssh/authorized_keys /home/olehermanse/.ssh/authorized_keys
+curl https://oleherman.com/ssh/ohmbp >> /home/olehermanse/.ssh/authorized_keys
+curl https://oleherman.com/ssh/ohpc >> /home/olehermanse/.ssh/authorized_keys
 chown -R olehermanse:olehermanse /home/olehermanse/
 
 cp ~/.dotfiles_olehermanse/config/sudo/* /etc/sudoers.d/
